@@ -1,0 +1,118 @@
+/* óvëf */
+P {
+  padding-left: 0.5em;
+  line-height: 150%;
+}
+
+DL {
+  line-height: 150%;
+  border-style: none none solid none;
+  border-width: 1px;
+  border-color: #9a6;
+}
+
+DL.sub_item {
+  line-height: 150%;
+  border-style: none;
+}
+
+DT {
+  font-weight: bold;
+  padding: 1px 4px;
+  background-color: #dfa;
+}
+
+.sub_item DT {
+  font-weight: bold;
+  padding: 1px 4px;
+  background-color: transparent;
+}
+
+DD {
+  font-weight: normal;
+  margin-bottom: 0.5em;
+}
+
+A {
+  font-weight: bold;
+}
+
+H1 {
+  font-size: large;
+  padding: 4px 10px;
+  background-color: #dfa;
+  border-style: solid;
+  border-width: 1px 2px 2px 1px;
+  border-color: #9a6;
+}
+
+H2 {
+  font-size: medium;
+  padding: 4px;
+  background-color: #dfa;
+  border-style: none none solid none;
+  border-width: 1px;
+  border-color: #9a6;
+}
+
+
+/* è¸ÇË */
+.title_box {
+  padding: 20px 20px;
+  background-color: #dfa;
+  border-style: solid;
+  border-width: 1px 2px 2px 1px;
+  border-color: #9a6;
+  font-weight: bold;
+}
+
+.index_items {
+  padding-left: 1em;
+  font-weight: bold;
+}
+
+.small {
+  font-size: smaller;
+  line-height: 125%;
+}
+
+.wide_spc {
+  letter-spacing: 0.4em;
+}
+
+.wide {
+  line-height: 150%;
+}
+
+.indent1 {
+  padding-left: 1em;
+}
+
+.margin1 {
+  margin-left: 1em;
+}
+
+.btn_frame {
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  padding: 0px 4px;
+  background-color: #ddd;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #aaa #666 #666 #aaa;
+  font-weight: bold;
+  font-size: 90%;
+}
+
+.note_text {
+  background-color: #ecc;
+}
+
+.rem_text {
+  color: #066;
+}
+
+.red_mark {
+  color: #c00;
+  font-weight: bold;
+}

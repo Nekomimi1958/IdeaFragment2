@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>ファイルメニュー</title>
+<link rel="stylesheet" type="text/css" href="help.css">
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="インポート">
+	<param name="Keyword" value="エクスポート">
+	<param name="Keyword" value="ファイルメニュー">
+	<param name="Keyword" value="印刷">
+</object>
+</head>
+
+<body>
+
+<h1>ファイルメニュー</h1>
+
+<dl>
+<dt><img src="btn_file_new.gif" alt="" height="24" width="24"> 新規作成
+<dd>新たに断片のデータファイルを作ります。
+
+<dt><img src="btn_open.gif" alt="" height="24" width="24"> 開く
+<dd>既存のデータファイル(*.IFD)を開きます。<br>
+ファイルは、最大40個まで開けます。ドラッグ＆ドロップで開くことも可能です。<br>
+なお、読み込み専用属性のデータファイルを開いた場合は、タイトルバーに「<b>編集禁止</b>」の表示がされ、編集操作ができないようになっています。 また存在しないファイルを指定した場合は、確認の上、新規作成になります。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> 最近開いたファイル
+<dd>最近開いたデータファイルの履歴(最大20個)を参照できます。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> マージ
+<dd>既存のデータファイルから断片情報を読み込んで、アクティブなウィンドウに追加します。
+
+<dt><img src="btn_save.gif" alt="" height="24" width="24"> 上書き保存
+<dd>アクティブウィンドウのデータファイルを上書き保存します。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> 名前を付けて保存
+<dd>アクティブウィンドウのデータを別名で保存します。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> 閉じる
+<dd>アクティブなウィンドウを閉じます。変更後保存していない場合は確認が出ます。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> 全て保存して終了
+<dd>変更されているデータをすべて上書き保存し、プログラムを終了します。<br>
+<br>
+
+※V2.00 からデータファイルが Unicode(UTF-8) で保存されるようになりました。読み込む際は、UTF-8、SjiftJIS のどちらでも開けます。UTF-8 で保存されたファイルは、以前のバージョンでは開けませんので注意してください。
+</dl>
+
+<dl>
+<dt id="InportText"><img src="btn_blank.gif" alt="" height="16" width="24"> インポート - テキスト取り込み
+<dd>内容をテキストファイルから読み込み、デフォルトのサイズ・色で新たに断片を作ります。<br>
+なお、<a href="hid00014.htm">オプション設定 - 断片</a> で「<b>自動的に行数増</b>」がチェックされていると、デフォルトの行数を超えた場合、自動的に行数が増やされます。<br>
+<br>
+一行のテキストが一つの断片になります。一行の文字数は2000字までです。<br>
+行頭が <b>;</b> の場合、続く文字列が「無所属」なら無所属に、「グループ1」～「グループ100」ならそのグループとして認識され、それ以外の文字列は表札になります。また、- だけの行は、グループの区切りと見なされます。<br>
+<table border="0" cellpadding="2" class="margin1">
+<tr><td colspan="2"><b>例</b></td></tr>
+<tr><td>;無所属</td><td></td></tr>
+<tr><td>あれこれ</td><td class="rem_text">←無所属の断片</td></tr>
+<tr><td>いろいろ</td><td></td></tr>
+<tr><td>;グループ3</td><td class="rem_text">←ここからグループ3</td></tr>
+<tr><td>なんたらかたら</td><td class="rem_text">←グループ3の断片</td></tr>
+<tr><td>ああしてこうして</td><td>
+<tr><td>-</td><td class="rem_text">←グループの区切り </td></tr>
+<tr><td>;表札なのです</td><td class="rem_text">←グループ4の表札となる</td></tr>
+<tr><td>それからどうした</td><td></td></tr>
+<tr><td>    …</td><td></td></tr>
+<tr><td>    …</td><td></td></tr>
+</table>
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> エクスポート - テキスト書き出し
+<dd>断片のテキスト内容をファイルへ書き出します。<br>
+ファイルの書式は取り込みのものと同じで、グループ順に書き出されます。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> エクスポート - 断片をCSVファイル出力
+<dd> 断片についての情報をCSV形式のファイルで出力します。<br>
+１行目は見出し(種類,グループ,テキスト…等)となります。エクスポートする項目は、<a href="hid00019.htm">オプション設定 - その他2</a> で設定できます。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> エクスポート - 断片をTAB区切りファイル出力
+<dd>断片についての情報をTAB区切り形式のファイルで出力します。<br>
+１行目は見出しとなります。エクスポートする項目は、<a href="hid00019.htm">オプション設定 - その他2</a> で設定できます。<br>
+なお、<a href="hid00018.htm">オプション設定 - その他1</a>の「クリップボードコピーおよびエクスポート時に断片位置でソート」をチェックしていると、エクスポートする際に、断片の位置にしたがってソート(上から下、右列から左列へ)します。チェックしないと、奥から手前の順(断片をクリックした順)になります。<br>
+<br>
+<a href="hid00019.htm">オプション設定 - その他2</a> の「Unicode(UTF-8)でエクスポート」をチェックしていると Unicode(UTF-8)で、チェックを外していると ShiftJIS でエクスポートされます。
+</dl>
+
+<dl>
+<dt><img src="btn_print.gif" alt="" height="24" width="24"> 印刷
+<dd>アクティブなウィンドウの断片全体を、用紙におさまるように印刷します。ただし、<a href="hid00018.htm">オプション設定 - その他1</a> で「個別設定の画面サイズに基づいて印刷する」をチェックしている場合はそれにしたがいます。<br>
+<a href="hid00018.htm">オプション設定 - その他1</a> で「画面背景色を印刷」をチェックすると画面の背景色も印刷されます。また「モノクロ(２色）で印刷する」をチェックしていると、画像以外は白と黒の２色だけで印刷します。この場合、背景は全て白になります。<br>
+「印刷日時を印字」をチェックしていると、印刷した日時が右下隅に印字されます。<br>
+なお、リンクマークは印刷されません。
+
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> 画像として保存
+<dd>アクティブなウィンドウの断片全体を、画像としてファイルに保存します。<br>
+BMP、JPG、PNG、GIF、TIF のいずれかの形式で保存できます。なお、リンクマークは出力されません。<br>
+※JPG の場合、乱れやすいタイプの画像なので品質はデフォルトで 100 となっていますが、 <a href="hid00018.htm">オプション設定 - その他1</a> で変更することもできます。<br>
+</dl>
+
+<dl>
+<dt><img src="btn_blank.gif" alt="" height="16" width="24"> 終了
+<dd>プログラムを終了します。まだ保存していないデータファイルがある場合は確認が出ます。
+</dl>
+</body>
+</html>

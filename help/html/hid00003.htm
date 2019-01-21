@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>基本的な使い方</title>
+<link rel="stylesheet" type="text/css" href="help.css">
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="Susieプラグイン">
+	<param name="Keyword" value="プロパティ・ダイアログ">
+	<param name="Keyword" value="画像">
+	<param name="Keyword" value="基本的な使い方">
+	<param name="Keyword" value="断片">
+	<param name="Keyword" value="標識">
+	<param name="Keyword" value="表札">
+</object>
+</head>
+
+<body>
+
+<h1>基本的な使い方</h1>
+
+<p>
+プログラムを起動したら、<a href="hid00005.htm">ファイルメニュー</a> - <b>開く</b> で、サンプルの <b>SAMPLE.IFD</b> を開いてみて下さい。<br>
+ウィンドウが開かれ、その中に、文の書かれた四角がいくつか表示されるはずです。これらの四角を<b>断片</b>と呼びます。<br>まずはマウスを使って、断片をいろいろと操作してみましょう。
+</p>
+
+<p>
+断片をマウスでドラッグすると位置を自由に動かせます。<br>
+選択は左クリックで行います。<span class="btn_frame">Shift</span>キーを押しながらクリックすると、さらに選択に加えたり外したりできます。<br>
+<span class="btn_frame">Ctrl</span>キーを押しながら断片をクリックすると、その断片の所属する<b>グループ</b>全体が選択されます。<br>
+<span class="btn_frame">Shift</span>キーと<span class="btn_frame">Ctrl</span>キーを同時に押しながらクリックすると、その断片と関係線でつながっている全ての断片を一度に選択できます。<br>
+ウィンドウの背景をドラッグすると選択枠が現れ、それで断片を囲んで一度に選択することも可能です。<br>
+複数の断片が選択されている場合、マウスでドラッグすると一緒に移動できます。<br>
+なお<span class="btn_frame">Alt</span>キーを押しながら画面をドラッグするとスクロールします。
+</p>
+
+<p>
+断片をダブルクリックすると、<a href="hid00032.htm">プロパティ・ダイアログ</a>が現れ、断片のタイプ、テキスト内容、グループ、サイズ、色、リンク先を設定できます。
+</p>
+
+<p>
+断片にリンク先(ファイルやURL)が指定されている場合、<span class="btn_frame">Shift</span>キーを押しながらダブルクリックすると、リンク先を関連付けにしたがって開きます。また、リンク先がデータファイルなら、ファイル間でのジャンプになります。断片にリンクマークを表示していると、マークの左クリックでも可能です。
+</p>
+
+<p>
+断片は100のグループに分けて扱うことができます。また無所属とすることも可能です。表示メニューでグループリストを表示させておくと、グループ単位で断片を選択したり、画面から隠したり、またグループの中身を入れ替えたりすることができます。<br>
+なお、マウスで断片移動中に<span class="btn_frame">Ctrl</span>キーを押すと(<span class="btn_frame">Ctrl</span>+ ドラッグでグループ選択している場合は一旦放してから <b>Ctrl</b>)、選択中断片がグループからピックアップされ、そのまま他グループ内にドロップすればそのグループに移動できます。
+</p>
+
+<p>
+断片を作る際に<a href="hid00032.htm">プロパティ・ダイアログ</a>で、タイプを「<b>表札</b>」にすると、断片がそのグループの表札として機能するようになります。<br>
+表札に書かれたテキスト内容は、普通の断片とは別のフォントで表示されます。また表札のテキストは、グループ名としての意味を持ち、グループリストの表示にも用いられるので、わかりやすくなります。<br>
+タイプを「<b>標識</b>」にすると、輪郭の無い透過背景の断片になり、ウィンドウに直接文字や記号を書いたように見えます。また「<b>画像</b>」にすると、指定した画像ファイル(BMP、JPG、PNG、GIF、TIF)やメタファイル(WMF、EMF)、MP3ファイルの埋め込み画像を表示できます。<b>WIC</b> コーデックを追加したり <a href="hid00020.htm">Susieプラグイン</a>を使用すれば他の形式も表示可能。
+</p>
+
+<p>
+その他、断片に対するさまざまな操作は、メインメニューや、右クリック時に出るポップアップメニューで行います。詳しくは<a href="hid00004.htm">メニュー</a>についての説明を参照して下さい。
+</p>
+
+</body>
+</html>

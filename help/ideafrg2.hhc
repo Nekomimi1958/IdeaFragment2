@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="はじめに">
+		<param name="Local" value="html\hid00001.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="インストール">
+			<param name="Local" value="html\hid00002.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="基本的な使い方">
+			<param name="Local" value="html\hid00003.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="メニュー">
+		<param name="Local" value="html\hid00004.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ファイルメニュー">
+			<param name="Local" value="html\hid00005.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="編集メニュー">
+			<param name="Local" value="html\hid00006.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ジャンプメニュー">
+			<param name="Local" value="html\hid00007.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ツールメニュー">
+			<param name="Local" value="html\hid00008.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="表示メニュー">
+			<param name="Local" value="html\hid00009.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ウィンドウメニュー">
+			<param name="Local" value="html\hid00010.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="オプションメニュー">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="オプション設定">
+				<param name="Local" value="html\hid00012.htm">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="デザイン">
+					<param name="Local" value="html\hid00013.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="断片">
+					<param name="Local" value="html\hid00014.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="ショートカット">
+					<param name="Local" value="html\hid00015.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="ウィンドウ">
+					<param name="Local" value="html\hid00016.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="表示">
+					<param name="Local" value="html\hid00017.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="その他1">
+					<param name="Local" value="html\hid00018.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="その他2">
+					<param name="Local" value="html\hid00019.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="プラグイン">
+					<param name="Local" value="html\hid00020.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="関連付け">
+					<param name="Local" value="html\hid00021.htm">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="個別設定">
+				<param name="Local" value="html\hid00022.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ヘルプメニュー">
+			<param name="Local" value="html\hid00011.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ツールバー">
+		<param name="Local" value="html\hid00023.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="標準ツールバー">
+			<param name="Local" value="html\hid00024.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="断片操作ツールバー">
+			<param name="Local" value="html\hid00025.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="モード切替ツールバー ">
+			<param name="Local" value="html\hid00026.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="その他">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="起動時オプション">
+			<param name="Local" value="html\hid00027.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="データファイルの仕様">
+			<param name="Local" value="html\hid00028.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="変更履歴">
+			<param name="Local" value="html\hid00029.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="参考文献">
+			<param name="Local" value="html\hid00030.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="著作">
+			<param name="Local" value="html\hid00031.htm">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

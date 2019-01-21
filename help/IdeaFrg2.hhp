@@ -1,0 +1,98 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=..\..\IdeaFrg2.chm
+Contents file=ideafrg2.hhc
+Default topic=html\hid00001.htm
+Display compile progress=No
+Full-text search=Yes
+Index file=IdeaFrg2.hhk
+Language=0x411 “ú–{Œê (“ú–{)
+Title=IdeaFragment2‚Ìƒwƒ‹ƒv
+
+
+[FILES]
+html\hid00001.htm
+html\hid00002.htm
+html\hid00003.htm
+html\hid00004.htm
+html\hid00005.htm
+html\hid00006.htm
+html\hid00007.htm
+html\hid00008.htm
+html\hid00009.htm
+html\hid00010.htm
+html\hid00011.htm
+html\hid00012.htm
+html\hid00013.htm
+html\hid00014.htm
+html\hid00015.htm
+html\hid00016.htm
+html\hid00017.htm
+html\hid00018.htm
+html\hid00019.htm
+html\hid00020.htm
+html\hid00021.htm
+html\hid00022.htm
+html\hid00023.htm
+html\hid00024.htm
+html\hid00025.htm
+html\hid00026.htm
+html\hid00027.htm
+html\hid00028.htm
+html\hid00029.htm
+html\hid00030.htm
+html\hid00031.htm
+html\hid00032.htm
+html\hid00033.htm
+html\hid00034.htm
+html\hid00035.htm
+html\hid00036.htm
+html\hid00037.htm
+html\hid00038.htm
+
+[ALIAS]
+IDH_00001=html\hid00001.htm
+IDH_00002=html\hid00002.htm
+IDH_00003=html\hid00003.htm
+IDH_00004=html\hid00004.htm
+IDH_00005=html\hid00005.htm
+IDH_00006=html\hid00006.htm
+IDH_00007=html\hid00007.htm
+IDH_00008=html\hid00008.htm
+IDH_00009=html\hid00009.htm
+IDH_00010=html\hid00010.htm
+IDH_00011=html\hid00011.htm
+IDH_00012=html\hid00012.htm
+IDH_00013=html\hid00013.htm
+IDH_00014=html\hid00014.htm
+IDH_00015=html\hid00015.htm
+IDH_00016=html\hid00016.htm
+IDH_00017=html\hid00017.htm
+IDH_00018=html\hid00018.htm
+IDH_00019=html\hid00019.htm
+IDH_00020=html\hid00020.htm
+IDH_00021=html\hid00021.htm
+IDH_00022=html\hid00022.htm
+IDH_00023=html\hid00023.htm
+IDH_00024=html\hid00024.htm
+IDH_00025=html\hid00025.htm
+IDH_00026=html\hid00026.htm
+IDH_00027=html\hid00027.htm
+IDH_00028=html\hid00028.htm
+IDH_00029=html\hid00029.htm
+IDH_00030=html\hid00030.htm
+IDH_00031=html\hid00031.htm
+IDH_00032=html\hid00032.htm
+IDH_00033=html\hid00033.htm
+IDH_00034=html\hid00034.htm
+IDH_00035=html\hid00035.htm
+IDH_00036=html\hid00036.htm
+IDH_00037=html\hid00037.htm
+IDH_00038=html\hid00038.htm
+
+[MAP]
+#include helpmap.h
+
+[INFOTYPES]
+

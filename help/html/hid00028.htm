@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>データファイルの仕様</title>
+<link rel="stylesheet" type="text/css" href="help.css">
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="データファイルの仕様">
+	<param name="Keyword" value="データ移行ツール">
+</object>
+</head>
+
+<body>
+
+<h1>データファイルの仕様</h1>
+
+<p>
+<b>IdeaFragment2</b>のデータファイルは、<b>.IFD</b> という拡張子のテキストファイル(UTF-8)です。<br>
+テキストですので、直接編集したり、他の用途に用いることも可能ですが、データ書式が崩れると正しく読み込めなくなる恐れがありますので注意してください。
+</p>
+
+<p>
+データ書式の概略は以下の通りです。
+</p>
+
+<hr size="1">
+
+<h2>[Fragment] セクション</h2>
+
+<p>
+&gt;<i>識別子</i><br>
+<i>キー</i>=<i>値</i><br>
+…<br>
+…<br>
+&lt;<br>
+という書式で１個の断片を表します。
+</p>
+
+<table border="0" cellpadding="2">
+<tr><td colspan="2"><b>識別子</b></td></tr>
+<tr><td>&gt;<b>TXT</b>:</td><td>通常断片</td></tr>
+<tr><td>&gt;<b>PLT</b>:</td><td>表札</td></tr>
+<tr><td>&gt;<b>SYM</b>:</td><td>標識</td></tr>
+<tr><td>&gt;<b>IMG</b>:</td><td>画像</td></tr>
+<tr><td>&gt;<b>JNC</b>:</td><td>関係線の分割点</td></tr>
+</table>
+<br>
+
+<table border="0" cellpadding="2">
+<tr><td colspan="2"><b>キー</b></td></tr>
+<tr><td><b>ID</b>:</td><td>内部的に用いられる永続的な固定識別番号</td></tr>
+<tr><td><b>TX</b>:</td><td>テキスト内容</td></tr>
+<tr><td><b>GP</b>:</td><td>所属グループ番号の並び</td></tr>
+<tr><td><b>XP</b>:</td><td>X位置</td></tr>
+<tr><td><b>YP</b>:</td><td>Y位置</td></tr>
+<tr><td><b>WD</b>:</td><td>幅(画像の場合は倍率の分子)</td></tr>
+<tr><td><b>HI</b>:</td><td>高(画像の場合は倍率の分母)</td></tr>
+<tr><td><b>FG</b>:</td><td>文字色</td></tr>
+<tr><td><b>BG</b>:</td><td>背景色</td></tr>
+<tr><td><b>LK</b>:</td><td>リンク先</td></tr>
+<tr><td><b>CT</b>:</td><td>作成日時</td></tr>
+<tr><td><b>MT</b>:</td><td>更新日時</td></tr>
+</table>
+
+
+<h2>[Connection] セクション</h2>
+
+<p>
+&gt;<i>識別子</i><br>
+<i>キー</i>=<i>値</i><br>
+…<br>
+…<br>
+&lt;<br>
+という書式で１本の関係線を表します。</p>
+
+<table border="0" cellpadding="2">
+<tr><td colspan="2"><b>識別子</b></td></tr>
+<tr><td>&gt;<b>GCL</b>:</td><td>グループ関係線</td></tr>
+<tr><td>&gt;<b>FCL</b>:</td><td>断片関係線</td></tr>
+<tr><td>&gt;<b>FGL</b>:</td><td>断片からグループへの関係線</td></tr>
+<tr><td>&gt;<b>GFL</b><i></i>:</td><td>グループから断片への関係線</td></tr>
+</table>
+<br>
+
+<table border="0" cellpadding="2">
+<tr><td colspan="2"><b>キー</b></td></tr>
+<tr><td><b>FR</b>:</td><td>始点(グループ番号または断片ID)</td></tr>
+<tr><td><b>TO</b>:</td><td>終点(グループ番号または断片ID)</td></tr>
+<tr><td><b>LT</b>:</td><td>線タイプ</td></tr>
+<tr><td><b>LW</b>:</td><td>線幅</td></tr>
+<tr><td><b>AT</b>:</td><td>矢の形</td></tr>
+<tr><td><b>AS</b>:</td><td>矢のサイズ</td></tr>
+<tr><td><b>TX</b>:</td><td>ラベル内容</td></tr>
+<tr><td><b>OP</b>:</td><td> 1: ラベルを反対側に表示</td></tr>
+</table>
+<br>
+
+
+<h2>[Group] セクション</h2>
+<p>
+&gt;<b>GRP</b><br>
+キー=値<br>
+…<br>
+&lt;<br>
+という書式で１つのグループを表します。</p>
+
+<table border="0" cellpadding="2">
+<tr><td colspan="2"><b>キー</b></td></tr>
+<tr><td><b>ID</b>:</td><td>グループの識別番号</td></tr>
+<tr><td><b>VS</b>:</td><td>表示状態</td></tr>
+<tr><td><b>FC</b>:</td><td>グループ枠の色</td></tr>
+<tr><td><b>LW</b>:</td><td>グループ枠の線幅</td></tr>
+</table>
+<br>
+
+
+<h2>[Option] セクション</h2>
+<table border="0" cellpadding="2">
+<tr><td><b>DataTitle</b>:</td><td>タイトル</td></tr>
+<tr><td><b>ScrWidth</b>:</td><td>画面の幅</td></tr>
+<tr><td><b>ScrHeigh</b>:</td><td>画面の高さ</td></tr>
+<tr><td><b>ScrDivMode</b>:</td><td>画面分割のタイプ</td></tr>
+<tr><td><b>ScrDivX</b>:</td><td>画面分割線の横分割数または分割幅等</td></tr>
+<tr><td><b>ScrDivY</b>:</td><td>画面分割線の縦割数または分割幅</td></tr>
+<tr><td><b>ScrDivLw</b>:</td><td>画面分割線の線幅</td></tr>
+<tr><td><b>ColBackground</b>:</td><td>画面背景色(個別)</td></tr>
+<tr><td><b>ColDivLine</b>:</td><td>画面分割線の色(個別)</td></tr>
+<tr><td><b>ColGrpFrame</b>:</td><td>グループ枠の色(個別)</td></tr>
+<tr><td><b>ColGrpLine</b>:</td><td>グループ関係線の色(個別)</td></tr>
+<tr><td><b>ColFrgLine</b>:</td><td>断片関係線の色(個別)</td></tr>
+<tr><td><b>ColLinLbl</b>:</td><td>関係線ラベルの文字色(個別)</td></tr>
+<tr><td><b>ColTitle</b>:</td><td>タイトルの文字色</td></tr>
+<tr><td><b>FontFrg</b>:</td><td>断片のフォント(個別)</td></tr>
+<tr><td><b>FontNam</b>:</td><td>表札のフォント(個別)</td></tr>
+<tr><td><b>FontSym</b>:</td><td>標識のフォント(個別)</td></tr>
+</table>
+
+</body>
+</html>

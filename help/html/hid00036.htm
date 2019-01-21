@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>正規表現について</title>
+<link rel="stylesheet" type="text/css" href="help.css">
+<Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="正規表現">
+</OBJECT>
+</head>
+
+<body>
+
+<h1>正規表現について</h1>
+
+<p>
+<a href="hid00006.htm">編集メニュー</a>の「<b>検索</b>」や<a href="hid00008.htm">ツールメニュー</a>の「<b>拡張検索</b>」で 「<b>正規表現</b>」を選ぶと、検索語に正規表現を使えます。
+</p>
+
+<p>
+正規表現では、検索語で以下のメタ文字を使えます。なおこれらは、検索語入力欄の右クリックメニューから参照できます。
+</p>
+
+<table border="0" cellpadding="2" class="margin1">
+<tr><td><b>\</b></td><td>次のメタ文字をクォートする(取り消す)</td></tr>
+<tr><td><b>^</b></td><td>断片内容の文頭にマッチ</td></tr>
+<tr><td><b>.</b></td><td>すべての文字にマッチ</td></tr>
+<tr><td><b>$</b></td><td>断片内容の文末にマッチ</td></tr>
+<tr><td><b>|</b></td><td>選択</td></tr>
+<tr><td><b>()</b></td><td>グループ化</td></tr>
+<tr><td><b>[]</b></td><td>文字クラス</td></tr>
+<tr><td><b>\w</b></td><td>単語の構成文字 (英数字と "_") にマッチ</td></tr>
+<tr><td><b>\W</b></td><td>単語の構成文字以外にマッチ</td></tr>
+<tr><td><b>\s</b></td><td>空白文字にマッチ</td></tr>
+<tr><td><b>\S</b></td><td>空白文字以外にマッチ</td></tr>
+<tr><td><b>\d</b></td><td>数字にマッチ</td></tr>
+<tr><td><b>\D</b></td><td>数字以外にマッチ</td></tr>
+<tr><td><b>\b</b></td><td>単語の境界にマッチ</td></tr>
+<tr><td><b>\B</b></td><td>単語の境界以外にマッチ</td></tr>
+<tr><td><b>\A</b></td><td>文字列の最初にのみマッチ</td></tr>
+<tr><td><b>\Z</b></td><td>文字列の最後にのみマッチ</td></tr>
+</table>
+
+<p>※断片内の改行は、<a href="hid00014.htm">オプション設定 - 断片</a> で設定されている「<b>改行文字列</b>」でマッチします。</p><br>
+
+<p><b>直前の文字の数量子</b></p>
+<table border="0" cellpadding="2" class="margin1">
+<tr><td><b>*</b></td><td>0 回以上にマッチ</td></tr>
+<tr><td><b>+</b></td><td>1 回以上にマッチ</td></tr>
+<tr><td><b>?</b></td><td>1 回または 0 回にマッチ</td></tr>
+<tr><td><b>{n}</b></td><td>ちょうど n 回にマッチ</td></tr>
+<tr><td><b>{n,}</b></td><td>n 回以上にマッチ</td></tr>
+<tr><td><b>{n,m}</b></td><td>n 回以上 m 回以下にマッチ</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>断片</title>
+<link rel="stylesheet" type="text/css" href="help.css">
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="断片">
+</object>
+</head>
+
+<body>
+
+<h2>オプション設定 - 断片</h2>
+
+<dl>
+<dt><img src="grpbox.gif" alt="" border=0> 断片デフォルトサイズ
+<dd>
+断片を作成する際のデフォルトのサイズを桁数・行数で指定します。
+
+<dt><img src="grpbox.gif" alt="" border=0> 表札デフォルトサイズ
+<dd>表札を作成する際のデフォルトのサイズを桁数・行数で指定します。
+
+<dt><img src="grpbox.gif" alt="" border=0> 画像デフォルト倍率
+<dd>画像断片を作成する際のデフォルトの表示倍率を指定します。<br>
+1／1で原寸、1／2で50％、2／1では倍寸というようになります。
+
+<dt><img src="grpbox.gif" alt="" border=0> 改行
+<dd>
+<img src="chkbox.gif" alt="" border=0> <b>テキストの改行を行う</b><br>
+<div class="indent1">
+チェックすると、<a href="hid00032.htm">プロパティ・ダイアログ</a>で断片のテキスト入力時に改行を入れることができます。この時、<b><img src="chkbox.gif" alt="" border=0> 改行はReturnキーで</b> がチェックされていると<span class="btn_frame">Return</span>キーで、そうでない場合は <span class="btn_frame">Ctrl</span>+<span class="btn_frame">Return</span>キーで改行します。<br>
+</div>
+<img src="edit.gif" alt="" border=0> <b>改行文字列</b><br>
+<div class="indent1">
+ファイル保存やクリップボードへのコピーの際に用いられる変換文字列です。テキスト中では使用しないような文字列を指定してください(デフォルトでは <b>＼</b>)。<br>
+※保存時に、テキスト中の改行コードは指定した改行文字列に変換されます。編集欄でこの文字列を使うと改行になってしまうので注意してください。 <br>
+</div>
+<p>
+なお、<b><img src="chkbox.gif" alt="" border=0></b> <b>テキストの改行を行う</b> および <b><img src="chkbox.gif" alt="" border=0></b> <b>改行はReturnキーで</b> がチェックされていて、さらに<b><img src="chkbox.gif" alt="" border=0></b> <b>Ctrl+ReturnキーでOK</b> をチェックすると、テキスト内容入力欄で <span class="btn_frame">Ctrl</span>+<span class="btn_frame">Return</span>キーを押した時に <span class="btn_frame"> OK </span>ボタンが選択されます。
+</p>
+
+<dt><img src="combobox.gif" alt="" border=0> 新規作成位置
+<dd>新規作成時の断片の出現位置を指定します。
+
+<dt><img src="combobox.gif" alt="" border=0> 片付け位置
+<dd><a href="hid00006.htm">編集メニュー</a> -「<b>片付け</b>」の際の位置を指定します。
+
+<dt><img src="combobox.gif" alt="" border=0> 移動時カーソル
+<dd>断片を移動する時のマウスカーソルの形を指定できます。
+
+<dt><img src="chkbox.gif" alt="" border=0> 新規作成時に無所属
+<dd>新規作成時に断片を無所属とします。ただしグループ枠内のダブルクリックで作成した場合は、そのグループになります。<br>
+チェックされていない場合には、以下の優先順位にしたがってグループが決まります。<br>
+<ol>
+<li>あるグループの断片だけが選択されていれば、そのグループ<br>
+<li>グループリストで選択されているグループ<br>
+<li>グループリストが非表示なら、表示状態にある最初のグループ<br>
+<li>それもなければ無所属<br>
+</ol>
+
+<dt><img src="chkbox.gif" alt="" border=0> 自動的に行数増
+<dd>断片テキストがデフォルトの行数を超えた時、自動的に行数が増やされます。<br>
+この設定は、ファイルメニュー - インポート - 「<a href="hid00005.htm#InportText">テキスト取り込み</a>」や、編集メニュー - 「<a href="hid00006.htm#NewClip">クリップボードから新規</a>」を実行する際にも適用されます。
+
+<dt><img src="chkbox.gif" alt="" border=0> テキスト入力の右端で折り返す
+<dd>プロパティ(新規作成)・ダイアログの断片テキスト編集欄で、表示を右端で折り返します。
+
+<dt><img src="chkbox.gif" alt="" border=0> テキスト入力時IMEオン
+<dd>プロパティ(新規作成)・ダイアログの断片テキスト編集欄でIMEが自動的にオンになります。<br>
+なお関係線のラベル入力時にもこの設定が反映されます。
+
+<dt><img src="chkbox.gif" alt="" border=0> リンクをアイコンで表示
+<dd>リンクマークの代わりに、リンク先ファイルに関連付けられているアイコン(16×16)を表示します。<br>
+
+<dt><img src="chkbox.gif" alt="" border=0> リンク先を相対パスで表す
+<dd>リンク先をリンク元からの相対パスで表示し、またデータファイルにも相対パスで保存します。相対パスにしておくと、リンク間のディレクトリ構造を保ったまま別の場所に移動させても、リンクが切れません。<br>
+なおリンク先とリンク元のドライブが異なる場合は、絶対パスになります。
+
+<dt><img src="combobox.gif" alt="" border=0> 画像の縮小・拡大アルゴリズム
+<dd>画像断片を縮小・拡大表示する際に用いる画像補間法を選択します。<br>
+なおメタファイルの場合は、この設定にかかわらず、ベクタイメージとして処理されます。
+
+</dl>
+
+</body>
+</html>
