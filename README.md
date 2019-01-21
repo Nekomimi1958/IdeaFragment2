@@ -2,7 +2,7 @@
 
 IdeaFragment2 is a thinking support tool for Windows.  
 
-![Screenshot](screenshot_0.png)
+![Screenshot](screenshot.png)
 
 Supported language is Japanese only.  
 
