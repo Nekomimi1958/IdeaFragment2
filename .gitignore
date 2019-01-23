@@ -30,3 +30,22 @@
 *.exe
 *.out
 *.app
+
+# C++Builder
+*.~dsk
+*.dsk
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.local
+*.map
+*.stat
+*.tds
+
+Win32/
+Win64/
+__*/
+
+.nyanfi*
+tags
