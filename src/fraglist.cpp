@@ -21,16 +21,6 @@ __fastcall TFragList::TFragList(): TList()
 {
 }
 //---------------------------------------------------------------------------
-Fragment * __fastcall TFragList::Get(int Index)
-{
- 	return (Fragment*)(TList::Get(Index));
-}
-//---------------------------------------------------------------------------
-void __fastcall TFragList::Put(int Index, Fragment *Item)
-{
-	TList::Put(Index, Item);
-}
-//---------------------------------------------------------------------------
 void __fastcall TFragList::AllShow()
 {
 	for (int i=0; i<Count; i++) Items[i]->show_frag();

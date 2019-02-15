@@ -355,7 +355,7 @@ void __fastcall TIdeaFragMainForm::FormDestroy(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TIdeaFragMainForm::WmQueryEndSession(TMessage& msg)
 {
-	Perform(WM_CLOSE, 0, 0);
+	Perform(WM_CLOSE, 0, (NativeInt)0);
 	msg.Result = 1;
 }
 
@@ -2167,7 +2167,7 @@ void __fastcall TIdeaFragMainForm::OptionIndividualExecute(TObject *Sender)
 //===========================================================================
 void __fastcall TIdeaFragMainForm::HelpContentsExecute(TObject *Sender)
 {
-	Application->HelpShowTableOfContents();
+	HtmlHelpContext(1);
 }
 //---------------------------------------------------------------------
 void __fastcall TIdeaFragMainForm::HelpHomePageExecute(TObject *Sender)

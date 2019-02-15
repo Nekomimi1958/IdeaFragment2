@@ -57,7 +57,7 @@ void __fastcall TFrgPropDlg::FormShow(TObject *Sender)
 
 	//‘ÎÛ‚ª‚È‚¯‚ê‚Î’†’f‚µ‚Ä•Â‚¶‚é
 	if (!prpFS) {
-		Perform(WM_CLOSE, 0, 0);	return;
+		Perform(WM_CLOSE, 0, (NativeInt)0);	return;
 	}
 
 	Fragment *dp = prpFrag? prpFrag : prpFS->get_sel_single();

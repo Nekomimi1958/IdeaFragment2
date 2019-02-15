@@ -34,7 +34,13 @@ private:
 	bool Erased;
 
 	bool FSelected;
-	void __fastcall SetSelected(bool Value);
+	void __fastcall SetSelected(bool Value)
+	{
+		if (FSelected != Value) {
+			FSelected = Value;
+			Changed   = true;
+		}
+	}
 
 	void out_frag_text(TCanvas *t_cv, TRect tRC, int mgn, int itl);
 	bool draw_icon(UnicodeString fnam, TCanvas *cv, int x, int y, bool act = false);

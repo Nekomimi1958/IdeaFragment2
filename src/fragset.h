@@ -159,7 +159,11 @@ public:
 	void mov_sel_group(int gn, bool add_sw = false);
 	void rel_group(int gn);
 
-	void bring_to_front(Fragment *fp);
+	void bring_to_front(Fragment *fp)
+	{
+		if (fp) fp->Z = ++MaxZ;
+	}
+
 	void update_group_frame();
 	void update_frg_line();
 	void update_fg_line();

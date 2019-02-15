@@ -13,8 +13,15 @@
 //---------------------------------------------------------------------------
 class TFragList : public TList {
 private:
-	Fragment * __fastcall Get(int Index);
-	void __fastcall Put(int Index, Fragment *Item);
+	Fragment * __fastcall Get(int Index)
+	{
+	 	return (Fragment*)(TList::Get(Index));
+	}
+
+	void __fastcall Put(int Index, Fragment *Item)
+	{
+		TList::Put(Index, Item);
+	}
 
 public:
 	__fastcall TFragList();

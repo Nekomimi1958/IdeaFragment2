@@ -995,17 +995,17 @@ void __fastcall TFindExForm::ResultGridKeyDown(TObject *Sender, WORD &Key,
 //---------------------------------------------------------------------------
 void __fastcall TFindExForm::SrcCutItemClick(TObject *Sender)
 {
-	FindComboBox->Perform(WM_CUT, 0, 0);
+	FindComboBox->Perform(WM_CUT, 0, (NativeInt)0);
 }
 //---------------------------------------------------------------------------
 void __fastcall TFindExForm::SrcCopyItemClick(TObject *Sender)
 {
-	FindComboBox->Perform(WM_COPY, 0, 0);
+	FindComboBox->Perform(WM_COPY, 0, (NativeInt)0);
 }
 //---------------------------------------------------------------------------
 void __fastcall TFindExForm::SrcPasteItemClick(TObject *Sender)
 {
-	FindComboBox->Perform(WM_PASTE, 0, 0);
+	FindComboBox->Perform(WM_PASTE, 0, (NativeInt)0);
 }
 
 //---------------------------------------------------------------------------
@@ -1062,7 +1062,7 @@ void __fastcall TFindExForm::ClrFindHistActionUpdate(TObject *Sender)
 void __fastcall TFindExForm::RefRegItemClick(TObject *Sender)
 {
 	Clipboard()->AsText = get_tkn(((TMenuItem*)Sender)->Caption, " ");
-	FindComboBox->Perform(WM_PASTE, 0, 0);
+	FindComboBox->Perform(WM_PASTE, 0, (NativeInt)0);
 }
 //---------------------------------------------------------------------------
 

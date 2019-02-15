@@ -261,14 +261,14 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 		TAction *ap = (TAction*)IdeaFragMainForm->ActionList1->Actions[i];
 		int brk = (i>0 && !SameStr(ctg_str, ap->Category))? 1 : 0;
 		tmp.sprintf(_T("%s\t%s\t%u"), ap->Caption.c_str(), ShortCutToText(ap->ShortCut).c_str(), ap->ImageIndex);
-		ShortCutList->Items->AddObject(tmp, (TObject*)brk);
+		ShortCutList->Items->AddObject(tmp, (TObject*)(NativeInt)brk);
 		ctg_str = ap->Category;
 	}
 	for (int i=0; i<FrgPropDlg->ActionList1->ActionCount; i++) {
 		TAction *ap = (TAction*)FrgPropDlg->ActionList1->Actions[i];
 		int brk = (i==0);
 		tmp.sprintf(_T("%s\t%s\t-1"), ap->Hint.c_str(), ShortCutToText(ap->ShortCut).c_str());
-		ShortCutList->Items->AddObject(tmp, (TObject*)brk);
+		ShortCutList->Items->AddObject(tmp, (TObject*)(NativeInt)brk);
 	}
 	ShortCutList->ItemIndex = 0;
 

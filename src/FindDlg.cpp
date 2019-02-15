@@ -92,17 +92,17 @@ void __fastcall TFindSetDlg::FormClose(TObject *Sender,
 //---------------------------------------------------------------------------
 void __fastcall TFindSetDlg::SrcCutItemClick(TObject *Sender)
 {
-	FindComboBox->Perform(WM_CUT, 0, 0);
+	FindComboBox->Perform(WM_CUT, 0, (NativeInt)0);
 }
 //---------------------------------------------------------------------------
 void __fastcall TFindSetDlg::SrcCopyItemClick(TObject *Sender)
 {
-	FindComboBox->Perform(WM_COPY, 0, 0);
+	FindComboBox->Perform(WM_COPY, 0, (NativeInt)0);
 }
 //---------------------------------------------------------------------------
 void __fastcall TFindSetDlg::SrcPasteItemClick(TObject *Sender)
 {
-	FindComboBox->Perform(WM_PASTE, 0, 0);
+	FindComboBox->Perform(WM_PASTE, 0, (NativeInt)0);
 }
 
 //---------------------------------------------------------------------------
@@ -161,7 +161,7 @@ void __fastcall TFindSetDlg::ClrFindHistActionUpdate(TObject *Sender)
 void __fastcall TFindSetDlg::RefRegItemClick(TObject *Sender)
 {
 	Clipboard()->AsText = get_tkn(((TMenuItem*)Sender)->Caption, " ");
-	FindComboBox->Perform(WM_PASTE, 0, 0);
+	FindComboBox->Perform(WM_PASTE, 0, (NativeInt)0);
 }
 
 //---------------------------------------------------------------------------
