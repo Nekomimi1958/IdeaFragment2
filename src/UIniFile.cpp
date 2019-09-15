@@ -60,8 +60,9 @@ void UsrIniFile::LoadValues()
 				if (klist) klist->Add(s);
 		}
 	}
-	else
+	else {
 		Clear();
+	}
 	Modified = false;
 }
 

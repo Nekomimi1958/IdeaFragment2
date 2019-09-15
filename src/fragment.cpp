@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------//
-//	断片のクラス														//
+// 断片のクラス															//
 //																		//
 //----------------------------------------------------------------------//
 #include <vcl.h>
@@ -134,8 +134,9 @@ void Fragment::upd_link()
 				else {
 					if (MetaBuff) delete MetaBuff;
 					bool ok = false;
-					if (test_FileExt(ExtractFileExt(LinkName), ".mp3"))
+					if (test_FileExt(ExtractFileExt(LinkName), ".mp3")) {
 						ok = ID3_GetImage(LinkName, ImgBuff);
+					}
 					else {
 						if (EV->UseSpiFirst) ok = SPI->LoadImage(LinkName, ImgBuff);
 						if (!ok) ok = WIC_load_image(LinkName, ImgBuff);
@@ -436,8 +437,9 @@ bool Fragment::draw_icon(
 	//実ファイル依存
 	if (test_FileExt(fext, ".exe.ico.cur.ani.lnk")) {
 		int idx = EV->CachedIcoList->IndexOf(fnam);
-		if (idx!=-1)
+		if (idx!=-1) {
 			hIcon = ((TIcon*)EV->CachedIcoList->Objects[idx])->Handle;
+		}
 		else {
 			UINT flag = SHGFI_ICON|SHGFI_SMALLICON;
 			if (fnam.IsEmpty()) {
@@ -470,8 +472,9 @@ bool Fragment::draw_icon(
 				EV->LinkIconList->AddObject(fext, (TObject*)icon);
 			}
 		}
-		else
+		else {
 			hIcon = ((TIcon*)EV->LinkIconList->Objects[idx])->Handle;
+		}
 	}
 
 	//描画
@@ -483,12 +486,14 @@ bool Fragment::draw_icon(
 			cv->CopyMode = cmNotSrcCopy;
 			cv->Draw(x, y, mrk.get());
 		}
-		else
+		else {
 			::DrawIconEx(cv->Handle, x, y, hIcon, 16, 16, 0, NULL, DI_NORMAL);
+		}
 		return true;
 	}
-	else
+	else {
 		return false;
+	}
 }
 
 //---------------------------------------------------------------------------
@@ -577,8 +582,9 @@ void Fragment::show_frag()
 		//リンクマーク(MP3)
 		if (EV->show_LinkMark && test_FileExt(ExtractFileExt(LinkName), ".mp3")) {
 			//アイコン
-			if (EV->LinkIsIcon)
+			if (EV->LinkIsIcon) {
 				draw_icon(LinkName, cv, vRC.right - 16, vRC.bottom - 16, Jumping);
+			}
 			//マーク
 			else {
 				cv->CopyMode = Jumping? cmNotSrcCopy : cmSrcCopy;
@@ -683,8 +689,9 @@ void Fragment::print_frag(
 		TRect pRC = Rect(round_i(RC.Left * ratio), round_i(RC.Top * ratio),
 						 round_i(RC.Right * ratio), round_i(RC.Bottom * ratio));
 		//メタファイル
-		if (MetaBuff && !MetaBuff->Empty)
+		if (MetaBuff && !MetaBuff->Empty) {
 			p_cv->StretchDraw(pRC, MetaBuff);
+		}
 		//ビットマップ
 		else if (!ImgBuff->Empty) {
 			std::unique_ptr<Graphics::TBitmap> bmp(new Graphics::TBitmap());
@@ -777,10 +784,12 @@ void Fragment::view_frag(TCanvas *v_cv, double ratio)
 
 	//画像
 	if (style==fgsImage) {
-		if (MetaBuff && !MetaBuff->Empty)
+		if (MetaBuff && !MetaBuff->Empty) {
 			v_cv->StretchDraw(sRC, MetaBuff);
-		else if (!ImgBuff->Empty)
+		}
+		else if (!ImgBuff->Empty) {
 			v_cv->StretchDraw(sRC, ImgBuff);
+		}
 		else {
 			v_cv->Brush->Color = EV->col_Border;
 			v_cv->FrameRect(sRC);

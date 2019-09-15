@@ -70,8 +70,9 @@ void __fastcall TMDIChild::FormCloseQuery(TObject *Sender, bool &CanClose)
 		}
 		if (FS->forcesave) {
 			//•Û‘¶
-			if (!FS->file_name.IsEmpty())
+			if (!FS->file_name.IsEmpty()) {
 				FS->save_file(FS->file_name);
+			}
 			else {
 				SaveDialog->FileName="*.IFD";
 				if (SaveDialog->Execute()) {
@@ -174,8 +175,9 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 			Screen->Cursor = EV->crFragMove;
 			ScrMoving = true;
 		}
-		else
+		else {
 			SelSkip = false;
+		}
 	}
 	else {
 		int hx = X, hy = Y;
@@ -413,8 +415,9 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 					orgX	  = X;
 					orgY	  = Y;
 				}
-				else
+				else {
 					SelSkip = false;
+				}
 			}
 		}
 	}
@@ -519,8 +522,9 @@ void __fastcall TMDIChild::FormMouseMove(TObject *Sender,
 							mm.WParam   = 0;
 							Application->HintMouseMessage(this, mm);
 						}
-						else
+						else {
 							Application->CancelHint();
+						}
 					}
 				}
 				else {
@@ -529,7 +533,9 @@ void __fastcall TMDIChild::FormMouseMove(TObject *Sender,
 					Application->CancelHint();
 				}
 			}
-			else Application->CancelHint();
+			else {
+				Application->CancelHint();
+			}
 		}
 	}
 
@@ -603,8 +609,9 @@ void __fastcall TMDIChild::FormMouseUp(TObject *Sender,
 						else if (FromGn>0) {
 							if (fp) {
 								// ¨ ’f•Ð
-								if (fp->in_group(FromGn)==-1)
+								if (fp->in_group(FromGn)==-1) {
 									FS->set_fg_line(TDIR_G2F, FromGn, fp->ID);
+								}
 								// >’[“_ ¨ ’f•Ð
 								else {
 									Fragment *jp = FS->put_junction(xx0, yy0);
@@ -629,8 +636,9 @@ void __fastcall TMDIChild::FormMouseUp(TObject *Sender,
 									if (jp) FS->set_fg_line(TDIR_F2G, jp->ID, gn);
 								}
 								// ¨ ƒOƒ‹[ƒv
-								else
+								else {
 									FS->set_group_line(FromGn, gn);
+								}
 							}
 							// ¨ ’[“_
 							else {
@@ -789,8 +797,9 @@ void __fastcall TMDIChild::FormMouseUp(TObject *Sender,
 			}
 			Selecting = false;
 		}
-		else
+		else {
 			FS->FragMouseUp(fp, Button, Shift, X, Y);
+		}
 
 		IdeaFragMainForm->StatusBar->Panels->Items[2]->Text = EmptyStr;
 
@@ -809,8 +818,9 @@ void __fastcall TMDIChild::FormDblClick(TObject *Sender)
 		TPoint mp = ScreenToClient(Mouse->CursorPos);
 		Fragment *fp = FS->frag_from_pos(mp.x, mp.y);
 		//’f•Ðã
-		if (fp)
+		if (fp) {
 			FS->FragDblClick(fp);
+		}
 		else if (!FS->read_only) {
 			//ŠÖŒWüã
 			if (FS->CurLp) {

@@ -104,6 +104,7 @@ void make_key_list(TStrings *lst);
 bool is_KeyDown(WORD key);
 
 UnicodeString get_VersionStr(UnicodeString fnam, bool is_num = false);
+bool is_SnapToDefBtn();
 
 void msgbox_ERR(  UnicodeString msg, UnicodeString tit = "ÉGÉâÅ[");
 void msgbox_WARN( UnicodeString msg, UnicodeString tit = "åxçê");

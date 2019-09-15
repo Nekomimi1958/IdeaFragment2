@@ -168,8 +168,9 @@ void __fastcall TGrpFrame::Paint()
 		Canvas->Brush->Color = Plate->Selected? EV->col_selBG : Plate->colBG;
 		Canvas->Font->Color  = Plate->Selected? EV->col_selFG : Plate->colFG;
 		//c‘‚«
-		if (vflag)
+		if (vflag) {
 			vert_textout(Canvas, prc.Right - EV->plt_mgn, prc.Top + dh, Plate->TextStr);
+		}
 		//‰¡‘‚«
 		else {
 			int ymgn = ((prc.Bottom - prc.Top) - Canvas->TextHeight(" "))/2;

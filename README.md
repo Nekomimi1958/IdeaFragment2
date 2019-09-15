@@ -10,4 +10,4 @@ Supported language is Japanese only.
 http://nekomimi.la.coocan.jp/freesoft/ideafrg2.htm  
 
 ## Development Environment
-C++Builder 10.3.1 (BCC32)
+C++Builder 10.3.2 (BCC32)

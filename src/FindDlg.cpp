@@ -58,8 +58,9 @@ void __fastcall TFindSetDlg::FormShow(TObject *Sender)
 		FindComboBox->Items->Assign(lp);
 		FindComboBox->Text = lp->Strings[0];
 	}
-	else
+	else {
 		FindComboBox->Text = EmptyStr;
+	}
 
 	FindComboBox->SetFocus();
 }
@@ -181,8 +182,9 @@ void __fastcall TFindSetDlg::StartActionExecute(TObject *Sender)
 		FindComboBox->Text = wd;
 		ModalResult = mrOk;
 	}
-	else
+	else {
 		ModalResult = mrCancel;
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TFindSetDlg::StartActionUpdate(TObject *Sender)

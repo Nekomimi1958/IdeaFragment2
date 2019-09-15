@@ -119,19 +119,26 @@ int __fastcall FrgCmp_GroupEx(void * Item1, void * Item2)
 				if (fp1->colBG==fp2->colBG) {
 					if (fp1->CreTime==fp2->CreTime) {
 						if (fp1->ModTime==fp2->ModTime) {
-							if (fp1->LinkName==fp2->LinkName)
+							if (fp1->LinkName==fp2->LinkName) {
 								ret = (fp1->ID - fp2->ID);
+							}
 							else {
 								if		(fp1->LinkName.IsEmpty()) ret =  1;
 								else if (fp2->LinkName.IsEmpty()) ret = -1;
 								else ret = CompareStr(fp1->LinkName, fp2->LinkName);
 							}
 						}
-						else ret = -1 * (int)(fp1->ModTime - fp2->ModTime);
+						else {
+							ret = -1 * (int)(fp1->ModTime - fp2->ModTime);
+						}
 					}
-					else ret = -1 * (int)(fp1->CreTime - fp2->CreTime);
+					else {
+						ret = -1 * (int)(fp1->CreTime - fp2->CreTime);
+					}
 				}
-				else ret = -1 * (int)(fp1->colBG - fp2->colBG);
+				else {
+					ret = -1 * (int)(fp1->colBG - fp2->colBG);
+				}
 			}
 			else {
 				if		(fp1->TextStr.IsEmpty()) ret =  1;
@@ -162,8 +169,9 @@ int __fastcall FrgCmp_Style(void * Item1, void * Item2)
 	Fragment *fp1 = (Fragment*)Item1;
 	Fragment *fp2 = (Fragment*)Item2;
 	int ret;
-	if (fp1->style==fp2->style)
+	if (fp1->style==fp2->style) {
 		ret = FrgCmp_GroupEx(Item1, Item2);
+	}
 	else {
 		if		(fp1->style==fgsPlate)  ret = -1;
 		else if (fp2->style==fgsPlate)  ret =  1;
@@ -184,8 +192,9 @@ int __fastcall FrgCmp_Text(void * Item1, void * Item2)
 	Fragment *fp1 = (Fragment*)Item1;
 	Fragment *fp2 = (Fragment*)Item2;
 	int ret;
-	if (fp1->TextStr==fp2->TextStr)
+	if (fp1->TextStr==fp2->TextStr) {
 		ret = FrgCmp_GroupEx(Item1, Item2);
+	}
 	else {
 		if		(fp1->TextStr.IsEmpty()) ret =  1;
 		else if (fp2->TextStr.IsEmpty()) ret = -1;
@@ -230,8 +239,9 @@ int __fastcall FrgCmp_Link(void * Item1, void * Item2)
 	Fragment *fp1 = (Fragment*)Item1;
 	Fragment *fp2 = (Fragment*)Item2;
 	int ret;
-	if (fp1->LinkName==fp2->LinkName)
+	if (fp1->LinkName==fp2->LinkName) {
 		ret = FrgCmp_GroupEx(Item1, Item2);
+	}
 	else {
 		if		(fp1->LinkName.IsEmpty()) ret =  1;
 		else if (fp2->LinkName.IsEmpty()) ret = -1;
@@ -278,7 +288,9 @@ int __fastcall FrgCmp_Z(void * Item1, void * Item2)
 		else if (fp2->style==fgsImage) return 1;
 		else						   return (fp1->Z - fp2->Z);
 	}
-	else return (fp1->Z - fp2->Z);
+	else {
+		return (fp1->Z - fp2->Z);
+	}
 }
 //---------------------------------------------------------------------------
 //位置による比較
@@ -296,11 +308,11 @@ int __fastcall FrgCmp_Pos(void * Item1, void * Item2)
 
 	TRect rc = rc1;  rc.Intersect(rc2);
 	if (!rc.IsEmpty()) flag = (rc.Width() > std::min(rc1.Width(), rc2.Width())/2);
+	//幅の半分以上重なっていたら、縦並びとみなし上から下へ
 	if (flag)
-		//幅の半分以上重なっていたら、縦並びとみなし上から下へ
 		return (fp1->RC.Top - fp2->RC.Top);
+	//それ以外は左から右へ
 	else
-		//それ以外は左から右へ
 		return (fp1->RC.Left - fp2->RC.Left);
 }
 //---------------------------------------------------------------------------

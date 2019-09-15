@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------//
-//	オプション設定ダイアログ											//
+// オプション設定ダイアログ												//
 //																		//
 //----------------------------------------------------------------------//
 #include <vcl.h>
@@ -126,7 +126,7 @@ void __fastcall TOptionDlg::FormCreate(TObject *Sender)
 
 	//画像の拡大・縮小アルゴリズム
 	str_to_ComboBox(ScaleOptComboBox,
-		"ニアレストネイバー|バイリニア|バイキュービック|ファントリサンプリング|補完しない");
+		"ニアレストネイバー|バイリニア|バイキュービック|ファント・リサンプリング|補完しない");
 
 	//キー選択リスト
 	make_key_list(KeyComboBox->Items);
@@ -282,10 +282,7 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 
 	InitUpDown(ScrWdUpDown,	EV->DefScrWd);
 	InitUpDown(ScrHiUpDown,	EV->DefScrHi);
-
-	if		(EV->crFragMove==crHandGrabL) MovCsrCombo->ItemIndex = 1;
-	else if (EV->crFragMove==crHandGrabR) MovCsrCombo->ItemIndex = 2;
-	else							 	  MovCsrCombo->ItemIndex = 0;
+	MovCsrCombo->ItemIndex = (EV->crFragMove==crHandGrabL)? 1 : (EV->crFragMove==crHandGrabR)? 2 : 0;
 
 	PlateOnGfrmCheckBox->Checked	= EV->PlateOnGfrm;
 	PlateAlignComboBox->ItemIndex	= EV->PlateAlign;
@@ -841,10 +838,12 @@ void __fastcall TOptionDlg::FontButtonClick(TObject *Sender)
 		case IXFNT_sbar: FontDialog1->Font->Assign(StatusBar1->Font);		   break;
 		case IXFNT_dlg:  FontDialog1->Font->Assign(DialogFont);				   break;
 		}
+
 		if (idx==IXFNT_glst)
 			FontDialog1->Options << fdFixedPitchOnly;	//グループリストは固定ピッチ
 		else
 			FontDialog1->Options >> fdFixedPitchOnly;
+
 		if (FontDialog1->Execute()) {
 			switch (idx) {
 			case IXFNT_frg:
@@ -1176,8 +1175,9 @@ void __fastcall TOptionDlg::ConfigSpiActionUpdate(TObject *Sender)
 		spi_info *sp = SPI->PlgList->Items[idx];
 		((TAction*)Sender)->Enabled = (sp->ConfigurationDlg!=NULL);
 	}
-	else
+	else {
 		((TAction*)Sender)->Enabled = false;
+	}
 }
 
 //---------------------------------------------------------------------------
@@ -1397,7 +1397,9 @@ void __fastcall TOptionDlg::AddExpItemActionExecute(TObject *Sender)
 			ExpItemListBox2->Items->Add(ExpItemListBox1->Items->Strings[i]);
 			ExpItemListBox1->Items->Delete(i);
 		}
-		else i++;
+		else {
+			i++;
+		}
 	}
 }
 //---------------------------------------------------------------------------
@@ -1416,7 +1418,9 @@ void __fastcall TOptionDlg::DelExpItemActionExecute(TObject *Sender)
 			ExpItemListBox1->Items->Add(ExpItemListBox2->Items->Strings[i]);
 			ExpItemListBox2->Items->Delete(i);
 		}
-		else i++;
+		else {
+			i++;
+		}
 	}
 }
 //---------------------------------------------------------------------------

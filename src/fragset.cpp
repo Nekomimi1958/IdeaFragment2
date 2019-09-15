@@ -168,7 +168,9 @@ void FragSet::del_frag(Fragment *fp)
 			ap->erase(frg_owner);
 			delete ap; CLineList->Delete(i);
 		}
-		else i++;
+		else {
+			i++;
+		}
 	}
 
 	delete fp;
@@ -223,7 +225,9 @@ void FragSet::update_grp_empty()
 				i++;
 			}
 		}
-		else i++;
+		else {
+			i++;
+		}
 	}
 
 	CurLp = NULL;
@@ -244,8 +248,11 @@ void FragSet::del_sel_frag()
 			del_frag(fp);
 			FrgList->Delete(i);
 		}
-		else i++;
+		else {
+			i++;
+		}
 	}
+
 	SelList->Clear();
 	update_grp_empty();
 	modify		  = true;
@@ -316,7 +323,9 @@ void FragSet::update_frg_line()
 			if (!fp0->Visible || !fp1->Visible) continue;
 			ap->draw(frg_owner->Canvas, 0, GET_indcol(col_FrgLine), GET_indcol(col_LinLbl), ssw);
 		}
-		else i++;
+		else {
+			i++;
+		}
 	}
 }
 //---------------------------------------------------------------------
@@ -439,8 +448,9 @@ void FragSet::to_center(
 			find_fp->show_frag();
 			bring_to_front(fp);
 		}
-		else
+		else {
 			reset_notice();
+		}
 	}
 }
 
@@ -458,6 +468,7 @@ void FragSet::to_anchor(
 			int idn = anam.ToIntDef(-1);
 			fp = (idn!=-1)? FrgList->id_to_fp(idn) : FrgList->str_to_fp(anam);
 		}
+
 		if (fp) {
 			if (EV->SelJumpFrg)
 				one_select_center(fp);
@@ -465,8 +476,9 @@ void FragSet::to_anchor(
 				to_center(fp, false);
 			LastAnc = anam;
 		}
-		else
+		else {
 			LastAnc = EmptyStr;
+		}
 	}
 }
 
@@ -646,8 +658,9 @@ int FragSet::get_sel_group()
 		Fragment *fp = SelList->Items[i];
 		int gnx = fp->get_top_group();
 		if (gnx==gn) continue;
-		if (gn==-1)
+		if (gn==-1) {
 			gn = gnx;
+		}
 		else {
 			gn = -1; break;
 		}
@@ -1047,7 +1060,9 @@ void FragSet::clr_iso_junction()
 			}
 			else i++;
 		}
-		else i++;
+		else {
+			i++;
+		}
 	}
 
 	if (n>0) {
@@ -1840,6 +1855,7 @@ void FragSet::all_update(bool upd_img)
 			if (fp->group.stk[j]==-1) break;
 			if (GInfs->Items[fp->group.stk[j]].Visible) { flag = true; break; }
 		}
+
 		bool lastV = fp->Visible;
 		//表札
 		if (fp->style==fgsPlate) {
@@ -1847,11 +1863,12 @@ void FragSet::all_update(bool upd_img)
 				fp->Visible = EV->AlwaysShowNp? true : flag;
 			else
 				fp->Visible = false;
-
 		}
 		//断片
-		else
+		else {
 			fp->Visible = flag;
+		}
+
 		if (lastV != fp->Visible) fp->Changed = true;
 	}
 
@@ -2034,20 +2051,25 @@ int FragSet::load_file(
 			//セクション
 			if (s[1] == '[' && s[l] == ']') {
 				tmpstr = s.SubString(2, l - 2);
-				if (SameText(tmpstr, "General"))
+				if (SameText(tmpstr, "General")) {
 					dmod = DSMODE_GEN;
-				else if (SameText(tmpstr, "Fragment"))
+				}
+				else if (SameText(tmpstr, "Fragment")) {
 					dmod = DSMODE_FRG;
+				}
 				else if (SameText(tmpstr, "Connection") && !mg_sw) {
 					dmod  = DSMODE_CON;
 					cl_md = TDIR_NONE;
 				}
-				else if (SameText(tmpstr, "Group") && !mg_sw)
+				else if (SameText(tmpstr, "Group") && !mg_sw) {
 					dmod = DSMODE_GRP;
-				else if (SameText(tmpstr, "Option"))
+				}
+				else if (SameText(tmpstr, "Option")) {
 					dmod = DSMODE_OPT;
-				else
+				}
+				else {
 					dmod = DSMODE_NON;
+				}
 			}
 			//データ
 			else {
@@ -2062,7 +2084,9 @@ int FragSet::load_file(
 						else			   			fp->style = fgsNormal;
 						continue;
 					}
-					else if (s[1]=='<') continue;
+					else if (s[1]=='<') {
+						continue;
+					}
 				}
 				else if (dmod==DSMODE_CON) {
 					if (s[1]=='>') {	//関係線データの開始
@@ -2143,17 +2167,20 @@ int FragSet::load_file(
 							if (fp->ID>MaxID) MaxID = fp->ID;
 						}
 					}
-					else if (SameStr(kstr, "TX"))
+					else if (SameStr(kstr, "TX")) {
 						fp->TextStr = ReplaceStr(vstr, "\"\"", "\"");
+					}
 					else if (SameStr(kstr, "GP")) {
 						TStringDynArray ibuf = get_csv_array(vstr, MAX_IN_GRP);
 						for (int j=0; j<MAX_IN_GRP; j++)
 							fp->group.stk[j] = (j<ibuf.Length)? ibuf[j].ToIntDef(0) : -1;
 					}
-					else if (SameStr(kstr, "XP"))
+					else if (SameStr(kstr, "XP")) {
 						fp->RC.Left = vstr.ToIntDef(2);
-					else if (SameStr(kstr, "YP"))
+					}
+					else if (SameStr(kstr, "YP")) {
 						fp->RC.Top  = vstr.ToIntDef(2);
+					}
 					else if (SameStr(kstr, "WD")) {
 						int w = vstr.ToIntDef(EV->def_wd);
 						if (w<1 || w>MAX_FRG_WD) w = EV->def_wd;
@@ -2186,10 +2213,12 @@ int FragSet::load_file(
 						fp->LinkName = rel_to_absdir(vstr, fnam);
 						fp->upd_link();
 					}
-					else if (SameStr(kstr, "CT"))
+					else if (SameStr(kstr, "CT")) {
 						fp->CreTime = str_to_date_time(vstr);
-					else if (SameStr(kstr, "MT"))
+					}
+					else if (SameStr(kstr, "MT")) {
 						fp->ModTime = str_to_date_time(vstr);
+					}
 					break;
 
 				case DSMODE_CON:	//関係線
@@ -2214,24 +2243,34 @@ int FragSet::load_file(
 						}
 					}
 					else {
-						if (SameStr(kstr, "VS"))
+						if (SameStr(kstr, "VS")) {
 							GInfs->Items[gn].Visible = ((vstr.ToIntDef(1)==1));
+						}
 						else if (SameStr(kstr, "FC")) {
 							TColor c = (TColor)(vstr.ToIntDef(-1));
 							GInfs->Items[gn].col_GrpFrm = (c==-1)? Graphics::clNone : c;
 						}
-						else if (SameStr(kstr, "LW"))
+						else if (SameStr(kstr, "LW")) {
 							GInfs->Items[gn].LnWidth = vstr.ToIntDef(0);
+						}
 					}
 					break;
 
 				case DSMODE_OPT:	//オプション
 					if (StartsText("Col", kstr)) vc = (TColor)vstr.ToIntDef((int)Graphics::clNone);
 
-					if		(SameText(kstr, "DataTitle"))	data_title = vstr;
-					else if (SameText(kstr, "TitlePos"))	title_pos  = vstr.ToIntDef(0);
-					else if (SameText(kstr, "ScrWidth"))	scr_wd	   = vstr.ToIntDef(EV->DefScrWd);
-					else if (SameText(kstr, "ScrHeight"))	scr_hi	   = vstr.ToIntDef(EV->DefScrHi);
+					if (SameText(kstr, "DataTitle")) {
+						data_title = vstr;
+					}
+					else if (SameText(kstr, "TitlePos")) {
+						title_pos  = vstr.ToIntDef(0);
+					}
+					else if (SameText(kstr, "ScrWidth")) {
+						scr_wd = vstr.ToIntDef(EV->DefScrWd);
+					}
+					else if (SameText(kstr, "ScrHeight")) {
+						scr_hi = vstr.ToIntDef(EV->DefScrHi);
+					}
 					else if (SameText(kstr, "ScrDivMode")) {
 						if		(SameStr(vstr, "DVN")) div_mod = DVMODE_DVN;
 						else if (SameStr(vstr, "PXN")) div_mod = DVMODE_PXN;
@@ -2241,19 +2280,45 @@ int FragSet::load_file(
 						else if (SameStr(vstr, "HXV")) div_mod = DVMODE_HXV;
 						else 						   div_mod = DVMODE_NON;
 					}
-					else if (SameText(kstr, "ScrDivX"))			div_x	 = vstr.ToIntDef(0);
-					else if (SameText(kstr, "ScrDivY"))			div_y	 = vstr.ToIntDef(0);
-					else if (SameText(kstr, "ScrDivLw"))		div_lw	 = vstr.ToIntDef(1);
-					else if (SameText(kstr, "LastHPos"))		LastHPos = vstr.ToIntDef(0);
-					else if (SameText(kstr, "LastVPos"))		LastVPos = vstr.ToIntDef(0);
-					else if (SameText(kstr, "CurGroup"))		GInfs->cur_group = vstr.ToIntDef(1);
-					else if (SameText(kstr, "ColBackground"))	col_backgr	= vc;
-					else if (SameText(kstr, "ColDivLine"))		col_DivLine = vc;
-					else if (SameText(kstr, "ColGrpFrame"))		col_GrpFrm	= vc;
-					else if (SameText(kstr, "ColGrpLine"))		col_GrpLine = vc;
-					else if (SameText(kstr, "ColFrgLine"))		col_FrgLine = vc;
-					else if (SameText(kstr, "ColLinLbl"))		col_LinLbl	= vc;
-					else if (SameText(kstr, "ColTitle"))		col_Title	= vc;
+					else if (SameText(kstr, "ScrDivX")) {
+						div_x = vstr.ToIntDef(0);
+					}
+					else if (SameText(kstr, "ScrDivY")) {
+						div_y = vstr.ToIntDef(0);
+					}
+					else if (SameText(kstr, "ScrDivLw")) {
+						div_lw = vstr.ToIntDef(1);
+					}
+					else if (SameText(kstr, "LastHPos")) {
+						LastHPos = vstr.ToIntDef(0);
+					}
+					else if (SameText(kstr, "LastVPos")) {
+						LastVPos = vstr.ToIntDef(0);
+					}
+					else if (SameText(kstr, "CurGroup")) {
+						GInfs->cur_group = vstr.ToIntDef(1);
+					}
+					else if (SameText(kstr, "ColBackground")) {
+						col_backgr = vc;
+					}
+					else if (SameText(kstr, "ColDivLine")) {
+						col_DivLine = vc;
+					}
+					else if (SameText(kstr, "ColGrpFrame")) {
+						col_GrpFrm = vc;
+					}
+					else if (SameText(kstr, "ColGrpLine")) {
+						col_GrpLine = vc;
+					}
+					else if (SameText(kstr, "ColFrgLine")) {
+						col_FrgLine = vc;
+					}
+					else if (SameText(kstr, "ColLinLbl")) {
+						col_LinLbl = vc;
+					}
+					else if (SameText(kstr, "ColTitle")) {
+						col_Title = vc;
+					}
 					else if (SameText(kstr, "FontFrg")) {
 						get_font_from_str(frgFont, vstr);	ParentFrgFont = false;
 					}
@@ -2281,8 +2346,9 @@ int FragSet::load_file(
 			if (file_name.IsEmpty()) file_name = fnam;
 		}
 		//マージ
-		else
+		else {
 			modify = (fbuf->Count>1);
+		}
 	}
 
 	for (int i=0; i<FrgList->Count; i++) {
@@ -2605,8 +2671,9 @@ int FragSet::export_text(UnicodeString fnam)
 	//データをテキスト化
 	for (int gn=0; gn<=MAX_GROUP; gn++) {
 		if (GInfs->Items[gn].Empty) continue;
-		if (gn==0)
+		if (gn==0) {
 			fbuf->Add(";無所属");
+		}
 		else {
 			UnicodeString np_str;
 			Fragment *np = GInfs->get_name_plate(gn, &np_str);
@@ -2615,6 +2682,7 @@ int FragSet::export_text(UnicodeString fnam)
 			else
 				fbuf->Add(tmpstr.sprintf(_T(";グループ%d"), gn));
 		}
+
 		for (int i=0; i<FrgList->Count; i++) {
 			Fragment *fp = FrgList->Items[i];
 			if (fp->group.stk[0]==gn && fp->style==fgsNormal) fbuf->Add(fp->TextStr);
@@ -2680,15 +2748,27 @@ int FragSet::export_file(
 					default:		temp = "断片";
 					}
 				}
-				else if (SameStr(key, "GP")) temp.sprintf(_T("%d"),		fp->group.stk[0]);
-				else if (SameStr(key, "TX")) temp.sprintf(_T("\"%s\""),	fp->TextStr.c_str());
-				else if (SameStr(key, "FG")) temp.sprintf(_T("0x%08x"),	fp->colFG);
-				else if (SameStr(key, "BG")) temp.sprintf(_T("0x%08x"),	fp->colBG);
-				else if (SameStr(key, "LK")) temp.sprintf(_T("\"%s\""),	fp->LinkName.c_str());
-				else if (SameStr(key, "CT"))
+				else if (SameStr(key, "GP")) {
+					temp.sprintf(_T("%d"), fp->group.stk[0]);
+				}
+				else if (SameStr(key, "TX")) {
+					temp.sprintf(_T("\"%s\""), fp->TextStr.c_str());
+				}
+				else if (SameStr(key, "FG")) {
+					temp.sprintf(_T("0x%08x"), fp->colFG);
+				}
+				else if (SameStr(key, "BG")) {
+					temp.sprintf(_T("0x%08x"), fp->colBG);
+				}
+				else if (SameStr(key, "LK")) {
+					temp.sprintf(_T("\"%s\""), fp->LinkName.c_str());
+				}
+				else if (SameStr(key, "CT")) {
 					temp.sprintf(_T("\"%s\""), fp->CreTime.FormatString("yyyy/mm/dd hh:nn:ss").c_str());
-				else if (SameStr(key, "MT"))
+				}
+				else if (SameStr(key, "MT")) {
 					temp.sprintf(_T("\"%s\""), fp->ModTime.FormatString("yyyy/mm/dd hh:nn:ss").c_str());
+				}
 
 				if (j>0) lbuf += separator;
 				lbuf += temp;
@@ -2728,8 +2808,10 @@ void FragSet::get_sel_str(UnicodeString *cpybuf)
 				if (fp->group.stk[0]==gn && fp->style==fgsNormal) s.cat_sprintf(_T("%s\n"), fp->TextStr.c_str());
 			}
 			if (s.IsEmpty()) continue;
-			if (gn==0)
+
+			if (gn==0) {
 				(*cpybuf).UCAT_TSTR(";無所属\n");
+			}
 			else {
 				UnicodeString np_str;
 				Fragment *np = GInfs->get_name_plate(gn, &np_str);
@@ -2805,8 +2887,11 @@ void FragSet::copy_buf(bool cutsw)
 				del_frag(fp);
 				FrgList->Delete(i);
 			}
-			else i++;
+			else {
+				i++;
+			}
 		}
+
 		FSbuf->IsCopy = false;
 		SelList->Clear();
 		update_grp_empty();
@@ -2926,16 +3011,20 @@ void FragSet::paste_buf(
 			fp = new_frag();
 			dp = FSbuf->FrgList->Items[i];
 			fp->assign(dp);
-			if (flag)
-				//新規作成位置に貼り付けに
+
+			//新規作成位置に貼り付けに
+			if (flag) {
 				set_new_pos(fp, i);
+			}
+			//元位置から4ドットずらして貼り付け
 			else {
-				//元位置から4ドットずらして貼り付け
 				fp->RC.Left += 4;
 				fp->RC.Top	+= 4;
 			}
+
 			fp->Selected = true;
 			fp->Visible  = true;
+
 			//すでに表札があれば解除
 			Fragment *np = GInfs->get_name_plate(fp->group.stk[0], NULL);
 			if (np && np!=fp) fp->style = fgsNormal;
@@ -3023,8 +3112,9 @@ void FragSet::rect_select(TRect rc)
 				rc2 = sp->PlateRect;
 				rc2.Offset(sp->Left, sp->Top);
 			}
-			else
+			else {
 				rc2 = fp->vRC;
+			}
 
 			if (EV->FrameAllSel || rc.Contains(rc2)) fp->Selected = true;
 			if (gflag)
@@ -3052,8 +3142,9 @@ void FragSet::group_select(
 	for (int i=0; i<FrgList->Count; i++) {
 		Fragment *fp = FrgList->Items[i];	if (!fp->Visible) continue;
 		fp->Selected = (fp->in_group(gn)!=-1);
-		if (fp->Selected)
+		if (fp->Selected) {
 			bring_to_front(fp);
+		}
 		else {
 			fp->show_frag();
 			if (fp->style==fgsPlate && fp->OnGfrm) GInfs->Items[fp->group.stk[0]].gfp->Repaint();
@@ -3185,8 +3276,9 @@ void FragSet::one_select_center(Fragment *fp)
 		}
 		to_center(fp, false, x, y);
 	}
-	else
+	else {
 		to_center(fp, false);
+	}
 }
 
 //---------------------------------------------------------------------
@@ -3312,11 +3404,12 @@ void FragSet::spread_sel()
 	int left_min = p.x;
 	int top_min  = p.y;
 
-	if (EV->SpreadShuffle)
-		//シャッフル
+	//シャッフル
+	if (EV->SpreadShuffle) {
 		for (int i=0; i<scnt/2; i++) SelList->Exchange(random(scnt), random(scnt));
+	}
+	//テキスト順にソート
 	else {
-		//テキスト順にソート
 		int sd = EV->FLstSortDir;
 		EV->FLstSortDir = 1;
 		SelList->Sort(FrgCmp_Text);
@@ -3362,8 +3455,9 @@ void FragSet::spread_sel()
 			xp = (EV->SpreadAlign? left_min : (left_min + random(8)));
 			yp += (hmx + 8); hmx = 0;
 		}
-		else
+		else {
 			xp += (w + 8);
+		}
 	}
 
 	FrgList->Sort(FrgCmp_Z);
@@ -3722,9 +3816,9 @@ int FragSet::find_str(
 			if (!EV->FindCaseSw) opt << roIgnoreCase;
 			found = TRegEx::IsMatch(fp->TextStr, wd, opt);
 		}
-		else
+		else {
 			found = find_mlt(wd, fp->TextStr, EV->FindAndSw, EV->FindNotSw, EV->FindCaseSw);
-
+		}
 		fp->Matched = found;
 
 		if (sel_sw) {
@@ -3732,16 +3826,18 @@ int FragSet::find_str(
 				fp->Changed  = true;
 				n++;
 			}
-			else
+			else {
 				fp->Selected = false;
+			}
 		}
 		else {
 			if (found) {
 				fp->Selected = true;
 				n++;
 			}
-			else
+			else {
 				fp->Selected = false;
+			}
 		}
 	}
 
@@ -3784,8 +3880,9 @@ void FragSet::jump_link(Fragment *fp)
 			to_anchor(fp->LinkName);
 		}
 		//断片ファイル
-		else if (test_ideafrag2(fp->LinkName))
+		else if (test_ideafrag2(fp->LinkName)) {
 			IdeaFragMainForm->CreateMDIChild(fp->LinkName);
+		}
 		//その他
 		else {
 			while (is_KeyDown(VK_SHIFT));
@@ -3849,8 +3946,9 @@ void FragSet::draw_prn_img(TCanvas *cv, int wd, int hi, int foot_hi)
 		if (EV->show_DivLine && div_mod!=DVMODE_NON)
 			draw_divln(cv, scr_wd, scr_hi, p_ratio);
 	}
-	else
+	else {
 		p_ratio = std::min(0.95*wd/v_wd, 0.95*hi/v_hi);
+	}
 
 	//タイトルを印刷
 	draw_title(cv, p_ratio, (int)(v_wd * p_ratio), (int)(v_hi * p_ratio));
@@ -4282,8 +4380,9 @@ void __fastcall FragSet::FragMouseMove(Fragment *sp, TShiftState Shift, int X, i
 		Screen->Cursor = crNo;
 		return;
 	}
-	else if (!pickuped)
+	else if (!pickuped) {
 		Screen->Cursor = EV->crFragMove;
+	}
 
 	//画面右・下端でのスクロール処理
 	int  x_scr_area = frg_owner->ClientWidth  - 32;
@@ -4358,8 +4457,10 @@ void __fastcall FragSet::FragMouseMove(Fragment *sp, TShiftState Shift, int X, i
 		if (floating) {
 			if (catched_fp==fp) rp->Offset(dx, dy);
 		}
-		else
+		else {
 			rp->Offset(dx, dy);
+		}
+
 		if (!r_scrolled && !l_scrolled)	vrp->Left += vx;
 		if (!b_scrolled && !t_scrolled)	vrp->Top  += vy;
 	}
@@ -4376,9 +4477,11 @@ void __fastcall FragSet::FragMouseMove(Fragment *sp, TShiftState Shift, int X, i
 			if (fp->style==fgsPlate && fp->OnGfrm) continue;
 			::UnionRect(&rc, &rc, &fp->RC);
 		}
+
 		//変化なし
-		if (rc==gp->cRC)
+		if (rc==gp->cRC) {
 			gp->RepaintFrm = false;
+		}
 		//変化有り
 		else {
 			gp->cRC = rc;
@@ -4593,8 +4696,9 @@ void __fastcall FragSet::FragMouseUp(Fragment *sp,
 					if (fp->style==fgsPlate) {
 						gn = fp->group.stk[0];
 						//無所属なら解除
-						if (gn==0)
+						if (gn==0) {
 							fp->style = fgsNormal;
+						}
 						//すでに表札があれば解除
 						else {
 							Fragment *np = GInfs->get_name_plate(gn, NULL);
@@ -4632,8 +4736,9 @@ void __fastcall FragSet::FragMouseUp(Fragment *sp,
 			jump_fp->Changed = true;
 			jump_fp->show_frag();
 		}
-		else
+		else {
 			all_update();
+		}
 		jump_fp = NULL;
 	}
 
@@ -4646,8 +4751,9 @@ void __fastcall FragSet::FragDblClick(Fragment *sp)
 	if (!sp) return;
 
 	//ジャンプ
-	if (is_KeyDown(VK_SHIFT))
+	if (is_KeyDown(VK_SHIFT)) {
 		jump_link(sp);
+	}
 	//プロパティ
 	else if (!read_only) {
 		if (SelList->Count==0) return;

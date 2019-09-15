@@ -28,6 +28,45 @@
 
 TIdeaFragMainForm *IdeaFragMainForm;		//メインフォーム
 
+//---------------------------------------------------------------------------
+//ローカルフック
+//---------------------------------------------------------------------------
+HHOOK hDlgHook;
+//---------------------------------------------------------------------------
+LRESULT CALLBACK DlgHookProc(int code, WPARAM wParam, LPARAM lParam)
+{
+	if (code<0) return ::CallNextHookEx(hDlgHook, code, wParam, lParam);
+
+	if (code==HC_ACTION) {
+		PCWPSTRUCT sp = (PCWPSTRUCT)lParam;
+		if (sp->message==WM_ACTIVATE && (LOWORD(sp->wParam)==WA_ACTIVE)) {
+			//ポインターを自動的に規定のボタン上に移動
+			if (is_SnapToDefBtn()) {
+				TForm *frm = NULL;
+				for (int i=0; i<Screen->FormCount && !frm; i++) {
+					TForm *fp = Screen->Forms[i];
+					if (fp->Handle==sp->hwnd) frm = fp;
+				}
+				if (frm && frm!=Application->MainForm) {
+					for (int i=frm->ComponentCount - 1; i>=0;  i--) {
+						TComponent *cp = frm->Components[i];
+						if (cp->ClassNameIs("TButton")) {
+							TButton *bp = (TButton *)cp;
+							if (bp->Default) {
+								Mouse->CursorPos = Point(bp->ClientOrigin.x + bp->Width/2, bp->ClientOrigin.y + bp->Height/2);
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return ::CallNextHookEx(hDlgHook, code, wParam, lParam);
+}
+
+//---------------------------------------------------------------------------
 HINSTANCE hHHctrl = NULL;
 DWORD	  Cookie  = NULL;
 
@@ -42,6 +81,8 @@ __fastcall TIdeaFragMainForm::TIdeaFragMainForm(TComponent *Owner) : TForm(Owner
 void __fastcall TIdeaFragMainForm::FormCreate(TObject *Sender)
 {
 	::GetWindowThreadProcessId(Handle, &ProcessId);		//プロセスIDを取得
+
+	hDlgHook = ::SetWindowsHookEx(WH_CALLWNDPROC, DlgHookProc, NULL, ::GetCurrentThreadId());
 
 	DropInitialize(Handle);
 
@@ -161,8 +202,10 @@ void __fastcall TIdeaFragMainForm::FormShow(TObject *Sender)
 		}
 	}
 	//浮動
-	else
+	else {
 		FloatGrpLst();
+	}
+
 	GroupListBox->Visible = IniFile->ReadBool(sct, "Vislble", true);
 	if (!GroupListBox->Visible) {
 		if (FragGrid->DockPanel->Width>1) {
@@ -261,8 +304,9 @@ void __fastcall TIdeaFragMainForm::FormShow(TObject *Sender)
 		for (int i=0; i<flst.Length; i++) CreateMDIChild(flst[i]);
 	}
 	//前回最後にアクティブだったファイル
-	else if (EV->OpenLastFile && !EV->LastFile.IsEmpty())
+	else if (EV->OpenLastFile && !EV->LastFile.IsEmpty()) {
 		CreateMDIChild(EV->LastFile);
+	}
 	//ホームウィンドウ
 	else if (!EV->HomeWindow.IsEmpty()) {
 		TMDIChild *cp = CreateMDIChild(EV->HomeWindow);
@@ -337,6 +381,8 @@ void __fastcall TIdeaFragMainForm::FormClose(TObject *Sender, TCloseAction &Acti
 //---------------------------------------------------------------------
 void __fastcall TIdeaFragMainForm::FormDestroy(TObject *Sender)
 {
+	::UnhookWindowsHookEx(hDlgHook);
+
 	//後片付け
 	delete FSbuf;
 	delete EV;
@@ -635,8 +681,9 @@ void __fastcall TIdeaFragMainForm::WmDropped(TMessage &msg)
 			}
 			//データファイル
 			else if (test_ideafrag2(fnam)) {
-				if (MDIChildCount<MAX_FRGWIN)
+				if (MDIChildCount<MAX_FRGWIN) {
 					CreateMDIChild(fnam);
+				}
 				else {
 					msgbox_WARN("これ以上開けません");
 					break;
@@ -955,8 +1002,9 @@ void __fastcall TIdeaFragMainForm::Window1Click(TObject *Sender)
 			mp->Visible = true;
 			mp->Checked = (MDIChildren[ix]==ActiveMDIChild);
 		}
-		else
+		else {
 			mp->Visible = false;
+		}
 	}
 }
 
@@ -1008,8 +1056,9 @@ void __fastcall TIdeaFragMainForm::Timer1Timer(TObject *Sender)
 		UpdateActiveChild();
 		EV->reqUpdate = EV->reqFrgLst = false;
 	}
-	else if (EV->reqFrgLst)
+	else if (EV->reqFrgLst) {
 		FragGrid->GridUpdate();
+	}
 }
 
 //---------------------------------------------------------------------
@@ -1072,8 +1121,9 @@ void __fastcall TIdeaFragMainForm::FileSaveExecute(TObject *Sender)
 		fsp->save_file(fsp->file_name);
 		StatusBar->Panels->Items[3]->Text = fsp->file_name + " を保存しました";
 	}
-	else
+	else {
 		FileSaveAs->Execute();	//名前を付けて保存
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TIdeaFragMainForm::FileSaveUpdate(TObject *Sender)
@@ -1452,9 +1502,10 @@ void __fastcall TIdeaFragMainForm::SelBgColItemClick(TObject *Sender)
 {
 	TColor col = (TColor)(((TComponent*)Sender)->Tag);
 	if (CurFS) {
-		if (BgColPopupMenu->Tag==0)
+		if (BgColPopupMenu->Tag==0) {
 			//背景色で選択
 			CurFS->bgcol_select(col);
+		}
 		else {
 			//既存背景色から塗り色を設定
 		    EV->col_Brush	  = col;
@@ -1648,8 +1699,9 @@ void __fastcall TIdeaFragMainForm::EditPropertyUpdate(TObject *Sender)
 	TAction *ap = (TAction*)Sender;
 	FragSet *fsp = CurFS;
 	if (fsp) {
-		if (fsp->read_only)
+		if (fsp->read_only) {
 			ap->Enabled = false;
+		}
 		else {
 			if (fsp->SelList->Count==1)
 				ap->Enabled = (fsp->SelList->Items[0]->style!=fgsJunction);
@@ -1657,8 +1709,9 @@ void __fastcall TIdeaFragMainForm::EditPropertyUpdate(TObject *Sender)
 				ap->Enabled = (fsp->SelList->Count>0);
 		}
 	}
-	else
+	else {
 		ap->Enabled = false;
+	}
 }
 //---------------------------------------------------------------------
 //ファイル名#IDをコピー
@@ -1691,8 +1744,9 @@ void __fastcall TIdeaFragMainForm::EditFindExecute(TObject *Sender)
 				FragGrid->GridUpdate(true);
 			}
 		}
-		else
+		else {
 			msg.sprintf(_T("[%s]が見つかりません"), kwd.c_str());
+		}
 		StatusBar->Panels->Items[3]->Text = msg;
 	}
 
@@ -1942,8 +1996,9 @@ void __fastcall TIdeaFragMainForm::ShowGrpLstExecute(TObject *Sender)
 				GroupListBox->SetFocus();
 			}
 		}
-		else
+		else {
 			GroupListBox->SetFocus();
+		}
 	}
 }
 //---------------------------------------------------------------------
@@ -2199,7 +2254,9 @@ void __fastcall TIdeaFragMainForm::GroupListBoxMeasureItem(
 		else 
 			Height = get_FontHeightP(EV->glstFont, EV->GLstInterLine);
 	}
-	else Height = 0;	//非表示
+	else {
+		Height = 0;	//非表示
+	}
 }
 //---------------------------------------------------------------------
 //グループリストの描画
@@ -2441,8 +2498,9 @@ void __fastcall TIdeaFragMainForm::DockPanelGetSiteInfo(TObject *Sender,
 void __fastcall TIdeaFragMainForm::DockPanelDockOver(TObject *Sender,
 	TDragDockObject *Source, int X, int Y, TDragState State, bool &Accept)
 {
-	if (Source->Control==ToolBar1 || Source->Control==ToolBar2 || Source->Control==ToolBar3)
+	if (Source->Control==ToolBar1 || Source->Control==ToolBar2 || Source->Control==ToolBar3) {
 		Accept = false;
+	}
 	else if (Source->Control==GroupListBox) {
 		TControl *cp = (TControl*)Sender;
 		if (State==dsDragEnter) {
@@ -2572,8 +2630,9 @@ void __fastcall TIdeaFragMainForm::GroupListBoxDblClick(TObject *Sender)
 						fsp->group_select(gn, true);
 						FragGrid->SetGroupTop(gn);
 					}
-					else
+					else {
 						fsp->all_select(false);
+					}
 				}
 				//空グループ
 				else {
@@ -2649,8 +2708,9 @@ void __fastcall TIdeaFragMainForm::GroupListBoxDragOver(TObject *Sender,
 	TObject *Source, int X, int Y, TDragState State, bool &Accept)
 {
 	FragSet *fsp = CurFS;
-	if (!fsp)
+	if (!fsp) {
 		Accept = false;
+	}
 	else {
 		int idx = GroupListBox->ItemAtPos(Point(X, Y), true);
 		if (!fsp->read_only && idx!=-1 && fsp->GInfs->cur_group>0) {
@@ -2661,7 +2721,9 @@ void __fastcall TIdeaFragMainForm::GroupListBoxDragOver(TObject *Sender,
 				LastItemRect = rc;
 			}
 		}
-		else Accept = false;
+		else {
+			Accept = false;
+		}
 	}
 }
 //---------------------------------------------------------------------
@@ -2704,8 +2766,10 @@ void __fastcall TIdeaFragMainForm::GListUpItemClick(TObject *Sender)
 				}
 			}
 		}
-		else
+		else {
 			gn2 = fsp->GInfs->cur_group - 1;
+		}
+
 		if (gn2!=-1) {
 			fsp->exchange_group(fsp->GInfs->cur_group, gn2);
 			fsp->GInfs->cur_group = gn2;
@@ -2721,6 +2785,7 @@ void __fastcall TIdeaFragMainForm::GListDownItemClick(TObject *Sender)
 	FragSet *fsp = CurFS;	if (!fsp) return;
 	if (ActiveControl!=GroupListBox) return;
 	if (fsp->read_only) return;
+
 	if (fsp->GInfs->cur_group>0 && fsp->GInfs->cur_group<MAX_GROUP) {
 		int gn2;
 		if (EV->HideBlkGrpItem) {
@@ -2731,8 +2796,9 @@ void __fastcall TIdeaFragMainForm::GListDownItemClick(TObject *Sender)
 				}
 			}
 		}
-		else
+		else {
 			gn2 = fsp->GInfs->cur_group + 1;
+		}
 
 		if (gn2!=-1) {
 			fsp->exchange_group(fsp->GInfs->cur_group, gn2);
@@ -2799,8 +2865,9 @@ void __fastcall TIdeaFragMainForm::GroupListBoxKeyDown(TObject *Sender, WORD &Ke
 			fsp->frg_owner->Invalidate();
 		}
 		//グループ選択/解除
-		else
+		else {
 			GroupListBoxDblClick(Sender);
+		}
 		break;
 
 	case VK_LEFT:
@@ -3003,8 +3070,9 @@ void __fastcall TIdeaFragMainForm::GLineOpsItemClick(TObject *Sender)
 		UpdateActiveChild();
 		fsp->modify = true;
 	}
-	else
+	else {
 		EV->CurTxOpposite = !EV->CurTxOpposite;
+	}
 }
 
 //---------------------------------------------------------------------------

@@ -54,8 +54,9 @@ public:
 			punk->AddRef();
 			return S_OK;
 		}
-		else
+		else {
 			return E_NOINTERFACE;
+		}
 	}
 
 	ULONG __stdcall AddRef()
@@ -108,8 +109,9 @@ protected:
 
 	virtual HRESULT __stdcall QueryInterface(const IID& iid, void **ppv)
 	{
-		if (IsEqualIID(iid, IID_IUnknown) || IsEqualIID(iid, IID_IDropTarget))
+		if (IsEqualIID(iid, IID_IUnknown) || IsEqualIID(iid, IID_IDropTarget)) {
 			*ppv = static_cast<IDropTarget *>(this);
+		}
 		else {
 			*ppv = NULL;
 			return E_NOINTERFACE;
@@ -131,8 +133,9 @@ protected:
 			delete this;
 			return 0;
 		}
-		else
+		else {
 			return refCount;
+		}
 	}
 };
 //---------------------------------------------------------------------------

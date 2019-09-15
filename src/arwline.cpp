@@ -146,8 +146,9 @@ void ArrowLine::draw(
 		th = cv->TextHeight(" ");
 		tmg = th/2;
 	}
-	else
+	else {
 		tw = th = tmg = 0;
+	}
 
 	int lmg = 0;
 
@@ -207,7 +208,6 @@ void ArrowLine::draw(
 		cv->MoveTo(px0 - ldx, py0 + ldy);
 		cv->LineTo(px1 - ldx, py1 + ldy);
 		lmg += dw;
-
 	}
 	//–î
 	else {
@@ -215,8 +215,9 @@ void ArrowLine::draw(
 		if (ratio>0) asz = round_i(asz * ratio);
 		double aw = M_PI/12 + (M_PI/12 * (lwd - 1)/4);
 		if (aType==ATYPE_LINE) {
-			if ((lwd>1) && (aType==ATYPE_LINE))
+			if ((lwd>1) && (aType==ATYPE_LINE)) {
 				cv->Pen->Width = ((ratio>0)? ((1 + lwd/2) * ratio) : (1 + lwd/2));
+			}
 			else {
 				if (is_prn && (EV->FixPrnLWidth>0))
 					cv->Pen->Width = EV->FixPrnLWidth;
@@ -224,14 +225,16 @@ void ArrowLine::draw(
 					cv->Pen->Width = std::max(1, (int)ratio);
 			}
 		}
-		else
+		else {
 			cv->Pen->Width = 1;
+		}
 
 		double a;
 		if (px1==px0)
 			a = ((py0>py1)? M_PI/2 : -M_PI/2);
 		else
 			a = atan(1.0*(py1-py0)/(px1-px0));
+
 		if (px1-px0>0) a += M_PI;
 		double a0  = a + aw;
 		double a1  = a - aw;
@@ -256,10 +259,7 @@ void ArrowLine::draw(
 		if (lType==LTYPE_CD_ARROW || lType==LTYPE_C_ARROW) {
 			axc *= 2; ayc *= 2;
 			arp[0] = Point(px1 + ax0 - axc, py1 + ay0 - ayc);
-			if (aType==ATYPE_SOLID)
-				arp[1] = Point(px1 + sdx, py1 + sdy);
-			else
-				arp[1] = Point(px1,		py1);
+			arp[1] = (aType==ATYPE_SOLID)? Point(px1 + sdx, py1 + sdy) : Point(px1, py1);
 			arp[2] = Point(px1 + ax1 - axc, py1 + ay1 - ayc);
 		}
 		else {
@@ -267,21 +267,16 @@ void ArrowLine::draw(
 			arp[1] = Point(px1 - sdx, py1 - sdy);
 			arp[2] = Point(px1 + ax1, py1 + ay1);
 		}
+
 		cv->Pen->Style   = psSolid;
 		cv->Brush->Style = bsSolid;
 		cv->Brush->Color = sel_sw? EV->col_selRct : lCurCol;
-		if (aType==ATYPE_SOLID)
-			cv->Polygon(arp, 2);
-		else
-			cv->Polyline(arp, 2);
+		if (aType==ATYPE_SOLID) cv->Polygon(arp, 2); else cv->Polyline(arp, 2);
 
 		if (lType==LTYPE_D_ARROW || lType==LTYPE_CD_ARROW) {
 			if (lType==LTYPE_CD_ARROW) {
 	 			arp[0] = Point(px0 - ax0 + axc, py0 - ay0 + ayc);
-				if (aType==ATYPE_SOLID)
-					arp[1] = Point(px0 - sdx, py0 - sdy);
-				else
-					arp[1] = Point(px0, py0);
+				arp[1] = (aType==ATYPE_SOLID)? Point(px0 - sdx, py0 - sdy) : Point(px0, py0);
 	 			arp[2] = Point(px0 - ax1 + axc, py0 - ay1 + ayc);
 			}
 			else {
@@ -289,10 +284,7 @@ void ArrowLine::draw(
 				arp[1] = Point(px0 + sdx, py0 + sdy);
 				arp[2] = Point(px0 - ax1, py0 - ay1);
 			}
-			if (aType==ATYPE_SOLID)
-				cv->Polygon(arp, 2);
-			else
-				cv->Polyline(arp, 2);
+			if (aType==ATYPE_SOLID) cv->Polygon(arp, 2); else cv->Polyline(arp, 2);
 		}
 
 		//ƒ‰ƒCƒ“
@@ -533,10 +525,12 @@ bool ArrowLine::set_pos(
 //---------------------------------------------------------------------------
 void ArrowLine::reverse()
 {
-	if (lType==LTYPE_D_ARROW)
+	if (lType==LTYPE_D_ARROW) {
 		lType = LTYPE_CD_ARROW;
-	else if (lType==LTYPE_CD_ARROW)
+	}
+	else if (lType==LTYPE_CD_ARROW) {
 		lType = LTYPE_D_ARROW;
+	}
 	else {
 		switch (tType) {
 		case TDIR_F2G: tType = TDIR_G2F; break;

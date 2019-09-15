@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------//
-//	プロパティ/新規作成ダイアログ										//
+// プロパティ/新規作成ダイアログ										//
 //																		//
 //----------------------------------------------------------------------//
 #include <vcl.h>
@@ -111,10 +111,10 @@ void __fastcall TFrgPropDlg::FormShow(TObject *Sender)
 			LinkNameEdit->Text = EV->LinkRelPath? abs_to_reldir(newLink, prpFS->file_name) : newLink;
 			swNewLink = false;
 		}
-		else
+		else {
 			LinkNameEdit->Text = EmptyStr;
+		}
 		mltSelected = false;
-
 	}
 	//プロパティ変更
 	else {
@@ -175,8 +175,9 @@ void __fastcall TFrgPropDlg::FormShow(TObject *Sender)
 			//全て同じスタイルか?
 			for (int i=0; i<prpFS->SelList->Count; i++) {
 				dp = prpFS->SelList->Items[i];
-				if (i==0)
+				if (i==0) {
 					cur_style = dp->style;
+				}
 				else if (cur_style!=dp->style) {
 					cur_style = fgsNormal; break;
 				}
@@ -206,8 +207,9 @@ void __fastcall TFrgPropDlg::FormShow(TObject *Sender)
 			TColor col = clNone;
 			for (int i=0; i<prpFS->SelList->Count; i++) {
 				dp = prpFS->SelList->Items[i];
-				if (col == clNone)
+				if (col == clNone) {
 					col = dp->colFG;
+				}
 				else if (col!=dp->colFG) {
 					col = clNone; break;
 				}
@@ -217,8 +219,9 @@ void __fastcall TFrgPropDlg::FormShow(TObject *Sender)
 			col = clNone;
 			for (int i=0; i<prpFS->SelList->Count; i++) {
 				dp = prpFS->SelList->Items[i];
-				if (col == clNone)
+				if (col == clNone) {
 					col = dp->colBG;
+				}
 				else if (col!=dp->colBG) {
 					col = clNone; break;
 				}
@@ -227,8 +230,9 @@ void __fastcall TFrgPropDlg::FormShow(TObject *Sender)
 				TrnsChkBox->AllowGrayed = true;
 				TrnsChkBox->State		= cbGrayed;
 			}
-			else
-				if (col!=clNone) Memo1->Color = col;
+			else if (col!=clNone) {
+				Memo1->Color = col;
+			}
 
 			//幅を最大値に設定
 			int max_w = 0;
@@ -556,8 +560,10 @@ void __fastcall TFrgPropDlg::PopGetTitItemClick(TObject *Sender)
 		if (get_html_inf(fnam, hbuf.get())) strbuf  = hbuf->Values["title"];
 	}
 	//ヘルプ
-	else if (test_FileExt(ext, ".hlp"))
+	else if (test_FileExt(ext, ".hlp")) {
 		strbuf = get_hlp_title(fnam);
+	}
+
 	if (!strbuf.IsEmpty()) Memo1->SelText = strbuf;
 }
 //---------------------------------------------------------------------------
@@ -717,24 +723,29 @@ void __fastcall TFrgPropDlg::CMDialogKey(TCMDialogKey &Msg)
 						else
 							Memo1->SelText = "\r\n";
 					}
-					else if (!is_KeyDown(VK_CONTROL))
+					else if (!is_KeyDown(VK_CONTROL)) {
 						ok_flag = true;
+					}
 				}
-				else
+				else {
 					ok_flag = true;
+				}
 			}
 			else {
 				if (SameText(ActiveControl->ClassName(), "TButton")) {
-					if (OkBtn->Focused())
+					if (OkBtn->Focused()) {
 						ok_flag = true;
+					}
 					else {
 						TButton *bp = (TButton*)ActiveControl;
 						bp->Click();
 					}
 				}
-				else
+				else {
 					ok_flag = true;
+				}
 			}
+
 			if (ok_flag) {
 				Msg.Result = 1;
 				OkAction->Execute();
@@ -1108,8 +1119,9 @@ void __fastcall TFrgPropDlg::OkActionExecute(TObject *Sender)
 			dp->ModTime = Now();
 			dp->Changed = true;
 			if (dp->Visible) {
-				if (dp->style==fgsPlate && EV->PlateOnGfrm)
+				if (dp->style==fgsPlate && EV->PlateOnGfrm) {
 					prpFS->GInfs->Items[gn].gfp->Repaint();
+				}
 				else {
 					dp->Selected = true;
 					dp->show_frag();

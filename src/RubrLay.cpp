@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------//
-//	浮遊配置ツール														//
+// 浮遊配置ツール														//
 //																		//
 //----------------------------------------------------------------------//
 #include <vcl.h>
@@ -63,8 +63,9 @@ void __fastcall TRubLayDlg::Timer1Timer(TObject *Sender)
 		FS->rubber_sel(LenTrackBar->Position, SpcTrackBar->Position);
 		FS->floating = true;
 	}
-	else
+	else {
 		FS->floating = false;
+	}
 }
 
 //---------------------------------------------------------------------------

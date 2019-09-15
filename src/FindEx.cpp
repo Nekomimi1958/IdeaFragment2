@@ -55,19 +55,22 @@ int __fastcall QFrgCmp(void * Item1, void * Item2)
 				if (qp1->TextStr == qp2->TextStr) {
 					if (qp1->CreTime == qp2->CreTime) {
 						if (qp1->ModTime == qp2->ModTime) {
-							if (qp1->LinkName == qp2->LinkName)
+							if (qp1->LinkName == qp2->LinkName) {
 								ret = (qp1->ID - qp2->ID);
+							}
 							else {
 								if		(qp1->LinkName.IsEmpty()) ret =  1;
 								else if (qp2->LinkName.IsEmpty()) ret = -1;
 								else ret = CompareStr(qp1->LinkName, qp2->LinkName);
 							}
 						}
-						else
+						else {
 							ret = -1 * (int)(qp1->ModTime - qp2->ModTime);
+						}
 					}
-					else
+					else {
 						ret = -1 * (int)(qp1->CreTime - qp2->CreTime);
+					}
 				}
 				else {
 					if		(qp1->TextStr.IsEmpty()) ret =  1;
@@ -87,8 +90,9 @@ int __fastcall QFrgCmp(void * Item1, void * Item2)
 			}
 		}
 	}
-	else
+	else {
 		ret = CompareText(qp1->FileName, qp2->FileName);
+	}
 
 	return ret ;
 }
@@ -149,8 +153,9 @@ void __fastcall TFindExForm::FormShow(TObject *Sender)
 		FindComboBox->Items->Assign(lp);
 		FindComboBox->Text = lp->Strings[0];
 	}
-	else
+	else {
 		FindComboBox->Text = EmptyStr;
+	}
 	FindComboBox->SetFocus();
 
 	//検索モードを設定
@@ -285,8 +290,9 @@ void __fastcall TFindExForm::UpdateListRow(int ridx)
 	UnicodeString odir = ObjDirComboBox->Text;
 
 	UnicodeString tmpstr;
-	if (!qp->DataTitle.IsEmpty())
+	if (!qp->DataTitle.IsEmpty()) {
 		tmpstr.sprintf(_T("[%s]"), qp->DataTitle.c_str());
+	}
 	else {
 		tmpstr = qp->FileName;
 		tmpstr = ChangeFileExt(tmpstr, EmptyStr);
@@ -388,17 +394,19 @@ void __fastcall TFindExForm::StartActionExecute(TObject *Sender)
 				if (!EV->FindCaseSw) opt << roIgnoreCase;
 				found = TRegEx::IsMatch(qp->TextStr, wd, opt);
 			}
-			else
+			else {
 				found = find_mlt(wd, qp->TextStr, EV->FindAndSw, EV->FindNotSw, EV->FindCaseSw);
+			}
+
 			if (!found) {
-				//マッチしなければ除外
 				delete qp;
 				QList->Delete(i);
 			}
-			else
+			else {
 				i++;
-			if (QList->Count>0)
-				ProgressBar1->Position = (i + 1)*ProgressBar1->Max/QList->Count;
+			}
+
+			if (QList->Count>0) ProgressBar1->Position = (i + 1)*ProgressBar1->Max/QList->Count;
 		}
 		StatusBar1->Panels->Items[0]->Text = IntToStr(QList->Count) + "個発見";
 	}
@@ -419,6 +427,7 @@ void __fastcall TFindExForm::StartActionExecute(TObject *Sender)
 				else {
 					if (!find_mlt(wd, fp->TextStr, EV->FindAndSw, EV->FindNotSw, EV->FindCaseSw)) continue;
 				}
+
 				if (exe_mod==1) {
 					//追加検索の場合、重複をさける
 					if (QIndexOf(fp->ID, cp->FS->file_name)!=-1) continue;
@@ -572,7 +581,9 @@ int __fastcall TFindExForm::search_file(UnicodeString fnam, UnicodeString wd)
 					tmpQList->Add(qp);
 					continue;
 				}
-				else if (s[1]=='<') continue;
+				else if (s[1]=='<') {
+					continue;
+				}
 			}
 
 			int p = s.Pos("="); if (p==0) continue;
@@ -628,12 +639,15 @@ int __fastcall TFindExForm::search_file(UnicodeString fnam, UnicodeString wd)
 						qp->colBG = (c==-1)? EV->col_defBG : c;
 					}
 				}
-				else if (SameText(kstr, "LK"))
+				else if (SameText(kstr, "LK")) {
 					qp->LinkName = vstr;
-				else if (SameText(kstr, "CT"))
+				}
+				else if (SameText(kstr, "CT")) {
 					qp->CreTime = StrToDateTime(vstr);
-				else if (SameText(kstr, "MT"))
+				}
+				else if (SameText(kstr, "MT")) {
 					qp->ModTime = StrToDateTime(vstr);
+				}
 				break;
 
 			case DSMODE_OPT:	//オプション
@@ -653,15 +667,17 @@ int __fastcall TFindExForm::search_file(UnicodeString fnam, UnicodeString wd)
 	while (i<tmpQList->Count) {
 		q_fragment *xqp = tmpQList->Items[i];
 		bool found;
-		if (xqp->style==fgsJunction)
+		if (xqp->style==fgsJunction) {
 			found = false;
+		}
 		else if (EV->FindRegSw) {
 			TRegExOptions opt;
 			if (!EV->FindCaseSw) opt << roIgnoreCase;
 			found = TRegEx::IsMatch(xqp->TextStr, wd, opt);
 		}
-		else
+		else {
 			found = find_mlt(wd, xqp->TextStr, EV->FindAndSw, EV->FindNotSw, EV->FindCaseSw);
+		}
 
 		if (found) {
 			if (ExeModeComboBox->ItemIndex==1) {
@@ -808,8 +824,9 @@ void __fastcall TFindExForm::ResultGridDrawCell(TObject *Sender, int ACol,
 			}
 		}
 		//その他
-		else
+		else {
 			cv->TextRect(Rect, x, y, cellstr);
+		}
 	}
 }
 

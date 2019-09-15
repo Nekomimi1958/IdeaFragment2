@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------//
-//	個別設定ダイアログ													//
+// 個別設定ダイアログ													//
 //																		//
 //----------------------------------------------------------------------//
 #include <vcl.h>
@@ -422,8 +422,9 @@ void __fastcall TOptIndDlg::ScrWdEdit_Change(TObject *Sender)
 			}
 		}
 	}
-	else
+	else {
 		SetAspectRatio();
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptIndDlg::ScrHiEdit_Change(TObject *Sender)
@@ -440,8 +441,9 @@ void __fastcall TOptIndDlg::ScrHiEdit_Change(TObject *Sender)
 			}
 		}
 	}
-	else
+	else {
 		SetAspectRatio();
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptIndDlg::NumberEditExit(TObject *Sender)

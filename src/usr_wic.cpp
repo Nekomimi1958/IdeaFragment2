@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------//
 // WIC 関連																//
 //																		//
-// ※スレッド毎に CoInitialize/CoUninitialize が必要					//
+// ！スレッド毎に CoInitialize/CoUninitialize が必要					//
 //----------------------------------------------------------------------//
 #include <vcl.h>
 #pragma hdrstop
@@ -52,8 +52,9 @@ UnicodeString WIC_get_fext_str()
 			ret_str = s;
 			int i = 1;
 			while (i < x_lst->Count-1) {
-				if (SameStr(s, x_lst->Strings[i]))
+				if (SameStr(s, x_lst->Strings[i])) {
 					x_lst->Delete(i);	//重複を削除
+				}
 				else {
 					s = x_lst->Strings[i++];
 					ret_str += s;
@@ -206,10 +207,12 @@ bool WIC_load_image(UnicodeString fnam, Graphics::TBitmap *o_bmp,
 //---------------------------------------------------------------------------
 //ビットマップを指定形式でファイルに保存
 //---------------------------------------------------------------------------
-bool WIC_save_image(UnicodeString fnam,	Graphics::TBitmap *i_bmp,
-	int img_q,		//jpeg 画質				(0～100 default = 100)
-	int ycrcb,		//jpeg サブサンプリング	(0～3	default = 0)
-	int cmp_mode)	//tiff 圧縮				(0～7   default = 0)
+bool WIC_save_image(
+	UnicodeString fnam,
+	Graphics::TBitmap *i_bmp,
+	int jpg_q,			//jpeg 画質				(0～100 default = 100)
+	int jpg_ycrcb,		//jpeg サブサンプリング	(0～3	default = 0)
+	int tif_cmp)		//tiff 圧縮				(0～7   default = 0)
 {
 	UnicodeString fext = ExtractFileExt(fnam) + ".";
 	GUID fmt;
@@ -247,23 +250,23 @@ bool WIC_save_image(UnicodeString fnam,	Graphics::TBitmap *i_bmp,
 			option.pstrName = UnicodeString("ImageQuality").c_str();
 			VariantInit(&varValue);
 			varValue.vt 	= VT_R4;
-			varValue.fltVal = (float)((img_q<100)? img_q/100.0 : 1.0);
+			varValue.fltVal = (float)((jpg_q<100)? jpg_q/100.0 : 1.0);
 			if (FAILED(properties->Write(1, &option, &varValue))) Abort();
 		}
 		//JpegP: YCrCb サブサンプリング
-		if (fmt==GUID_ContainerFormatJpeg && ycrcb>=0 && ycrcb<=3) {
+		if (fmt==GUID_ContainerFormatJpeg && jpg_ycrcb>=0 && jpg_ycrcb<=3) {
 			option.pstrName = UnicodeString("JpegYCrCbSubsampling").c_str();
 			VariantInit(&varValue);
-			varValue.vt 	= VT_UI1;
-			varValue.bVal	= ycrcb;
+			varValue.vt   = VT_UI1;
+			varValue.bVal = jpg_ycrcb;
 			if (FAILED(properties->Write(1, &option, &varValue))) Abort();
 		}
 		//Tiff: 圧縮方法
-		if (fmt==GUID_ContainerFormatTiff && cmp_mode>=0 && cmp_mode<=7) {
+		if (fmt==GUID_ContainerFormatTiff && tif_cmp>=0 && tif_cmp<=7) {
 			option.pstrName = UnicodeString("TiffCompressionMethod").c_str();
 			VariantInit(&varValue);
-			varValue.vt 	= VT_UI1;
-			varValue.bVal	= cmp_mode;
+			varValue.vt   = VT_UI1;
+			varValue.bVal = tif_cmp;
 			if (FAILED(properties->Write(1, &option, &varValue))) Abort();
 		}
 
@@ -329,11 +332,10 @@ bool WIC_resize_image(
 		switch (s_opt) {
 		case 1:  opt = WICBitmapInterpolationModeLinear; break;		//バイリニア
 		case 2:  opt = WICBitmapInterpolationModeCubic;	 break;		//バイキュービック
-		case 3:  opt = WICBitmapInterpolationModeFant;	 break;		//ファントリサンプリング
+		case 3:  opt = WICBitmapInterpolationModeFant;	 break;		//ファント・リサンプリング
 		default: opt = WICBitmapInterpolationModeNearestNeighbor;	//最近傍法
 		}
-		if (FAILED(scaler->Initialize(bitmap, i_wd, i_hi, opt)))
-			Abort();
+		if (FAILED(scaler->Initialize(bitmap, i_wd, i_hi, opt))) Abort();
 
 		//イメージをメモリにコピー
 		UINT stride = i_wd * 3;
@@ -355,7 +357,7 @@ bool WIC_resize_image(
 //画像の回転・反転
 //---------------------------------------------------------------------------
 bool WIC_rotate_image(Graphics::TBitmap *i_bmp,
-	int rot_opt)	//1=90/ 2=180/ 3=270(左に90)/ 4=左右反転/ 5=上下反転
+	int rot_opt)	//1:90/ 2:180/ 3:270(左に90)/ 4:左右反転/ 5:上下反転
 {
 	try {
 		TComInterface<IWICImagingFactory>		factory;
@@ -382,7 +384,7 @@ bool WIC_rotate_image(Graphics::TBitmap *i_bmp,
 		case  4: opt = WICBitmapTransformFlipHorizontal;	break;
 		case  5: opt = WICBitmapTransformFlipVertical;		break;
 		default: opt = WICBitmapTransformRotate0;	break;
- 		}
+		}
 		if (FAILED(rotator->Initialize(bitmap, opt))) Abort();
 
 		//サイズを取得

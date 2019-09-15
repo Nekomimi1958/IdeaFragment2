@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------//
-//	伸縮ダイアログ														//
+// 伸縮ダイアログ														//
 //																		//
 //----------------------------------------------------------------------//
 #include <vcl.h>
@@ -15,8 +15,7 @@
 TStretchDlg *StretchDlg;
 
 //---------------------------------------------------------------------------
-__fastcall TStretchDlg::TStretchDlg(TComponent* Owner)
-        : TForm(Owner)
+__fastcall TStretchDlg::TStretchDlg(TComponent* Owner) : TForm(Owner)
 {
 	FS		   = NULL;
 	PosMode    = 0;
@@ -79,8 +78,9 @@ void __fastcall TStretchDlg::TrackBar1Change(TObject *Sender)
 {
 	s_ratio = TrackBar1->Position/100.0;
 	//断片
-	if (PosMode==0)
+	if (PosMode==0) {
 		FS->stretch_sel(s_ratio, RadioGroup1->ItemIndex);
+	}
 	//グループ
 	else {
 		if (s_ratio>=0)
@@ -120,7 +120,6 @@ void __fastcall TStretchDlg::ApplyBtnClick(TObject *Sender)
 		TrackBar1->Position = ((RadioGroup1->ItemIndex==4)? 0 : 100);
 	else
 		TrackBar1->Position = 100;
-
 }
 //---------------------------------------------------------------------------
 

@@ -83,8 +83,9 @@ void __fastcall TFragGrid::FormDestroy(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TFragGrid::FormActivate(TObject *Sender)
 {
-	if (FrgLstGrid->Focused())
+	if (FrgLstGrid->Focused()) {
 		ListPanel->Color = clHighlight;
+	}
 	else if (DockPanel->DockClientCount>0) {
 		TWinControl *cp = (TWinControl*)DockPanel->DockClients[0];
 		if (cp->Visible) {
@@ -290,8 +291,9 @@ void __fastcall TFragGrid::FrgLstGridDrawCell(TObject *Sender, int ACol,
 					cv->FillRect(grc);
 				}
 			}
-			else
+			else {
 				cv->TextRect(Rect, x, y, cellstr);
+			}
 
 			if (fp->style==fgsPlate) {
 				UINT bdr = 0;
@@ -360,8 +362,9 @@ void __fastcall TFragGrid::FrgLstGridMouseDown(TObject *Sender,
 				SortMode = idx;
 				SortSkip = false;
 			}
-			else
+			else {
 				EV->FLstSortDir *= -1;
+			}
 			GridUpdate(true);
 			DblSkip = true;
 
@@ -399,8 +402,9 @@ void __fastcall TFragGrid::FrgLstGridKeyDown(TObject *Sender, WORD &Key,
 {
 	TStringGrid *gp = FrgLstGrid;
 
-	if (Key==VK_ESCAPE)
+	if (Key==VK_ESCAPE) {
 		IdeaFragMainForm->SetFocus();
+	}
 	else {
 		FragSet *cfs = IdeaFragMainForm->CurFS;
 		if (FS!=cfs) GridUpdate(true);	if (!FS) return;
