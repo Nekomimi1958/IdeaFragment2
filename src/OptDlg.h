@@ -205,6 +205,7 @@ __published:
 	TUpDown *TrmMgnUpDown;
 	TUpDown *TrmWdUpDown;
 	TUpDown *WdUpDown;
+	TCheckBox *RDragScrollCheckBox;
 
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall SKChgBtnClick(TObject *Sender);

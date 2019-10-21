@@ -20,7 +20,8 @@ __fastcall TAboutBox::TAboutBox(TComponent *Owner) : TForm(Owner)
 //---------------------------------------------------------------------------
 void __fastcall TAboutBox::FormShow(TObject *Sender)
 {
-	Version->Caption = "Version "+ get_VersionStr(Application->ExeName);
+	Version->Caption  = "Version "+ get_VersionStr(Application->ExeName);
+	Comments->Caption = "2003-2019 by Nekomimi";
 }
 //---------------------------------------------------------------------------
 

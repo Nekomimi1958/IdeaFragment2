@@ -31,7 +31,7 @@ object OptionDlg: TOptionDlg
       Top = 5
       Width = 634
       Height = 465
-      ActivePage = TabSheet1
+      ActivePage = TabSheet6
       Align = alClient
       MultiLine = True
       OwnerDraw = True
@@ -1085,7 +1085,7 @@ object OptionDlg: TOptionDlg
           Min = 10
           Frequency = 10
           Position = 10
-          TabOrder = 15
+          TabOrder = 16
           OnChange = JpgQTrackBarChange
         end
         object ArngPtUpDown: TUpDown
@@ -1152,11 +1152,11 @@ object OptionDlg: TOptionDlg
         end
         object SelJumpFrgCheckBox: TCheckBox
           Left = 16
-          Top = 335
+          Top = 360
           Width = 317
           Height = 17
           Caption = #12472#12515#12531#12503#20808#12398#26029#29255#12434#36984#25246#29366#24907#12395#12377#12427
-          TabOrder = 12
+          TabOrder = 13
         end
         object CopyCLineCheckBox: TCheckBox
           Left = 16
@@ -1185,7 +1185,7 @@ object OptionDlg: TOptionDlg
           Width = 268
           Height = 176
           Caption = #21360#21047
-          TabOrder = 14
+          TabOrder = 15
           object TLabel
             Left = 32
             Top = 138
@@ -1250,7 +1250,7 @@ object OptionDlg: TOptionDlg
           Width = 268
           Height = 85
           Caption = #12510#12454#12473#12507#12452#12540#12523#25805#20316
-          TabOrder = 13
+          TabOrder = 14
           object TLabel
             Left = 132
             Top = 23
@@ -1279,6 +1279,14 @@ object OptionDlg: TOptionDlg
             Caption = 'Shift + '#12507#12452#12540#12523#12391#27178#12473#12463#12525#12540#12523
             TabOrder = 1
           end
+        end
+        object RDragScrollCheckBox: TCheckBox
+          Left = 16
+          Top = 335
+          Width = 317
+          Height = 17
+          Caption = #21491#12489#12521#12483#12464#12391#30011#38754#12434#12473#12463#12525#12540#12523#12377#12427
+          TabOrder = 12
         end
       end
       object TabSheet9: TTabSheet
@@ -1701,7 +1709,7 @@ object OptionDlg: TOptionDlg
     end
   end
   object ColorDialog1: TColorDialog
-    Left = 88
+    Left = 368
     Top = 421
   end
   object FontDialog1: TFontDialog
@@ -1711,15 +1719,15 @@ object OptionDlg: TOptionDlg
     Font.Name = #65325#65331' '#65328#12468#12471#12483#12463
     Font.Style = []
     Options = [fdAnsiOnly]
-    Left = 152
+    Left = 432
     Top = 421
   end
   object OpenDialog1: TOpenDialog
-    Left = 216
+    Left = 496
     Top = 421
   end
   object ActionList1: TActionList
-    Left = 25
+    Left = 305
     Top = 421
     object OkAction: TAction
       Caption = 'OK'

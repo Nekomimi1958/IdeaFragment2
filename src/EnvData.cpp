@@ -178,6 +178,7 @@ EnvData::EnvData(Classes::TComponent* AOwner)
 	ShowDstGrp	   = IniFile->ReadBool(   sct, "ShowDstGrp");
 	FrameAllSel    = IniFile->ReadBool(   sct, "FrameAllSelect");
 	ChgGrpModeCtrl = IniFile->ReadBool(   sct, "ChgGrpModeCtrl");
+	RDragScroll    = IniFile->ReadBool(   sct, "RDragScroll");
 	SelJumpFrg	   = IniFile->ReadBool(   sct, "SelJumpFrg");
 	ImageIsBack    = IniFile->ReadBool(   sct, "ImageIsBack");
 	AlwaysShowNp   = IniFile->ReadBool(   sct, "AlwaysShowNp");
@@ -561,6 +562,7 @@ bool __fastcall EnvData::save_ini_file()
 	IniFile->WriteBool(   sct, "ShowDstGrp",		ShowDstGrp);
 	IniFile->WriteBool(   sct, "FrameAllSelect",	FrameAllSel);
 	IniFile->WriteBool(   sct, "ChgGrpModeCtrl",	ChgGrpModeCtrl);
+	IniFile->WriteBool(   sct, "RDragScroll",		RDragScroll);
 	IniFile->WriteBool(   sct, "SelJumpFrg",		SelJumpFrg);
 
 	IniFile->WriteBool(   sct, "ImageIsBack",		ImageIsBack);

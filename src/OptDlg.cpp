@@ -302,6 +302,7 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 	ImgIsBakCheckBox->Checked		= EV->ImageIsBack;
 	FrmAllSelCheckBox->Checked		= EV->FrameAllSel;
 	ChgGrpModeCtrlCheckBox->Checked = EV->ChgGrpModeCtrl;
+	RDragScrollCheckBox->Checked	= EV->RDragScroll;
 	SelJumpFrgCheckBox->Checked 	= EV->SelJumpFrg;
 	NewBlkDblClickCheckBox->Checked = EV->NewBlkDblClick;
 	PrintMonoCheckBox->Checked		= EV->PrintMono;
@@ -1660,6 +1661,7 @@ void __fastcall TOptionDlg::OkActionExecute(TObject *Sender)
 	EV->ImageIsBack    = ImgIsBakCheckBox->Checked;
 	EV->FrameAllSel    = FrmAllSelCheckBox->Checked;
 	EV->ChgGrpModeCtrl = ChgGrpModeCtrlCheckBox->Checked;
+	EV->RDragScroll    = RDragScrollCheckBox->Checked;
 	EV->SelJumpFrg	   = SelJumpFrgCheckBox->Checked;
 	EV->NewBlkDblClick = NewBlkDblClickCheckBox->Checked;
 	EV->PrintMono	   = PrintMonoCheckBox->Checked;

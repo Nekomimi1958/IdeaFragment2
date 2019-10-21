@@ -160,6 +160,7 @@ public:
 	bool ShowDstGrp;			//断片移動先のグループが非表示だったら表示に
 	bool FrameAllSel;			//選択枠と交差した断片は全て選択する
 	bool ChgGrpModeCtrl;		//グループ化時のCtrlキーの役割を入れ替える
+	bool RDragScroll;			//右ドラッグで画面をスクロール
 	bool SelJumpFrg;			//ジャンプ先の断片を選択状態にする
 	bool PrintMono;				//白黒(2値)印刷
 	int  FixPrnLWidth;			//印刷時の最小線幅　0:可変(最小1) 1..:固定

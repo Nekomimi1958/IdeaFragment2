@@ -167,11 +167,11 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 		IdeaFragMainForm->SetFocus();
 	}
 
+	lastP = Point(X, Y);
+
 	if (Shift.Contains(ssAlt) && Button==mbLeft) {
 		if (!SelSkip) {
 			//‰æ–ÊˆÚ“®ŠJŽn
-			lastP.x = X;
-			lastP.y = Y;
 			Screen->Cursor = EV->crFragMove;
 			ScrMoving = true;
 		}
@@ -204,8 +204,8 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 			}
 		}
 
-		if (IdeaFragMainForm->EditGLineBtn->Down) {
 		//ŸŠÖŒWüƒ‚[ƒhŸ
+		if (IdeaFragMainForm->EditGLineBtn->Down) {
 			PopupMenu = IdeaFragMainForm->GLinePopupMenu;
 			if (Button==mbLeft) {
 				FromFp = ToFp = NULL;
@@ -237,8 +237,7 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 					if (FromFp || ToFp || FromGn>0 || ToGn>0) {
 						FS->all_select(false);
 						FS->CLineMode = CLMODE_RECON;
-						IdeaFragMainForm->StatusBar->Panels->Items[2]->Text
-							= "ŠÖŒWü‚ÌÚ‘±•ÏX’†...";
+						IdeaFragMainForm->StatusBar->Panels->Items[2]->Text = "ŠÖŒWü‚ÌÚ‘±•ÏX’†...";
 					}
 				}
 				else {
@@ -252,15 +251,13 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 					if (cfp) {
 						FromFp = cfp;
 						FS->CLineMode = CLMODE_CONCT;
-						IdeaFragMainForm->StatusBar->Panels->Items[2]->Text
-							= "’f•Ð‚©‚çŠÖŒWü‚ðÝ’è’†...";
+						IdeaFragMainForm->StatusBar->Panels->Items[2]->Text = "’f•Ð‚©‚çŠÖŒWü‚ðÝ’è’†...";
 					}
 					//ƒOƒ‹[ƒvŠÖŒWüŠJŽn
 					else if (cgn>0) {
 						FromGn = cgn;
 						FS->CLineMode = CLMODE_CONCT;
-						IdeaFragMainForm->StatusBar->Panels->Items[2]->Text
-							= "ƒOƒ‹[ƒv‚©‚çŠÖŒWü‚ðÝ’è’†...";
+						IdeaFragMainForm->StatusBar->Panels->Items[2]->Text = "ƒOƒ‹[ƒv‚©‚çŠÖŒWü‚ðÝ’è’†...";
 					}
 					//’[“_‚©‚çŠÖŒWüŠJŽn
 					else {
@@ -270,16 +267,12 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 						if (cfp) {
 							FromFp = cfp;
 							FS->CLineMode = CLMODE_CONCT;
-							IdeaFragMainForm->StatusBar->Panels->Items[2]->Text
-								= "’[“_‚©‚çŠÖŒWü‚ðÝ’è’†...";
+							IdeaFragMainForm->StatusBar->Panels->Items[2]->Text = "’[“_‚©‚çŠÖŒWü‚ðÝ’è’†...";
 						}
 					}
 				}
-				lastP.x = X;
-				lastP.y = Y;
 			}
 		}
-
 		//ŸF“h‚èƒ‚[ƒhŸ
 		else if (IdeaFragMainForm->EditBrushBtn->Down) {
 			if (cfp) {
@@ -427,6 +420,12 @@ void __fastcall TMDIChild::FormMouseDown(TObject *Sender,
 void __fastcall TMDIChild::FormMouseMove(TObject *Sender,
 	  TShiftState Shift, int X, int Y)
 {
+	if (!ScrMoving && EV->RDragScroll && Shift.Contains(ssRight)) {
+		PopupMenu = NULL;
+		Screen->Cursor = EV->crFragMove;
+		ScrMoving = true;
+	}
+
 	//‰æ–ÊˆÚ“®’†
 	if (ScrMoving) {
 		HorzScrollBar->Position += (lastP.x - X);

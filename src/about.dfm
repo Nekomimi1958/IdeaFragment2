@@ -39,18 +39,19 @@ object AboutBox: TAboutBox
       IsControl = True
     end
     object Version: TLabel
-      Left = 96
+      Left = 21
       Top = 50
-      Width = 3
-      Height = 13
+      Width = 240
+      Height = 18
       Alignment = taCenter
+      AutoSize = False
       IsControl = True
     end
     object Comments: TLabel
-      Left = 60
+      Left = 21
       Top = 88
-      Width = 161
-      Height = 17
+      Width = 240
+      Height = 18
       Alignment = taCenter
       AutoSize = False
       Caption = #12501#12522#12540#12477#12501#12488#12454#12455#12450
