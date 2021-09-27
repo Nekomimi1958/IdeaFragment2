@@ -15,7 +15,6 @@
 #include <Vcl.Grids.hpp>
 #include <Vcl.ActnList.hpp>
 #include <Vcl.Menus.hpp>
-#include <Vcl.FileCtrl.hpp>
 #include "fragset.h"
 
 //---------------------------------------------------------------------------

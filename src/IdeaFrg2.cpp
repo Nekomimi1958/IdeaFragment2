@@ -2,16 +2,11 @@
 //	IdeaFragment2														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-
-//---------------------------------------------------------------------
 USEFORM("OptDlg.cpp", OptionDlg);
 USEFORM("OptIdDlg.cpp", OptIndDlg);
-USEFORM("MapView.cpp", MapViewer);
-USEFORM("Main.cpp", IdeaFragMainForm);
 USEFORM("PropDlg.cpp", FrgPropDlg);
+USEFORM("Main.cpp", IdeaFragMainForm);
+USEFORM("MapView.cpp", MapViewer);
 USEFORM("RubrLay.cpp", RubLayDlg);
 USEFORM("Stretch.cpp", StretchDlg);
 USEFORM("FindEx.cpp", FindExForm);
@@ -19,6 +14,7 @@ USEFORM("FindDlg.cpp", FindSetDlg);
 USEFORM("about.cpp", AboutBox);
 USEFORM("ChildWin.cpp", MDIChild);
 USEFORM("FrgGrid.cpp", FragGrid);
+
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR lpCmdLine, int)
 {

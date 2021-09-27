@@ -2,13 +2,6 @@
 // Susie 32bit Plug-in 操作クラス										//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <dir.h>
-#include <System.IOUtils.hpp>
-#include <System.StrUtils.hpp>
 #include "spiunit.h"
 
 //---------------------------------------------------------------------------
@@ -120,7 +113,7 @@ bool SpiUnit::GetImgSize(UnicodeString fnam, unsigned int *w, unsigned int *h)
 		spi_info *sp = FindPlugin(fnam);
 		if (!sp) Abort();
 
-		char fstr[MAXPATH];
+		char fstr[MAX_PATH];
 		strcpy(fstr, AnsiString(fnam).c_str());
 		pic_info pinf;
 		if (sp->GetPictureInfo((LPSTR)fstr, 0, 0, &pinf)!=0) Abort();
@@ -142,7 +135,7 @@ spi_info* SpiUnit::FindPlugin(UnicodeString fnam)
 	if (PlgList->Count==0) return NULL;
 
 	try {
-		char fstr[MAXPATH];
+		char fstr[MAX_PATH];
 		strcpy(fstr, AnsiString(fnam).c_str());
 
 		//ファイルの先頭2KBを読み込む
@@ -179,7 +172,7 @@ bool SpiUnit::LoadImage(UnicodeString fnam, Graphics::TBitmap *bmp, spi_info *sp
 		if (!sp) sp = FindPlugin(fnam);
 		if (!sp) Abort();
 
-		char fstr[MAXPATH];
+		char fstr[MAX_PATH];
 		strcpy(fstr, AnsiString(fnam).c_str());
 
 		HANDLE bmp_inf, bmp_dat;

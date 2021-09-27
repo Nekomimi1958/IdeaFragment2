@@ -2,10 +2,6 @@
 // MP3 ID3ƒ^ƒOî•ñ‚Ìˆ—												//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
 #include "usr_wic.h"
 #include "usr_id3.h"
 

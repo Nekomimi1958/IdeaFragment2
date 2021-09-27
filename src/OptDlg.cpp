@@ -2,11 +2,6 @@
 // オプション設定ダイアログ												//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <algorithm>
 #include "UserFunc.h"
 #include "fragset.h"
 #include "EnvData.h"

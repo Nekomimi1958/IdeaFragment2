@@ -2,12 +2,6 @@
 //	ŠÂ‹«İ’èŠÇ—‚ÌƒNƒ‰ƒX												//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <tchar.h>
-#include <memory>
-#include <algorithm>
 #include "UserFunc.h"
 #include "MapView.h"
 #include "EnvData.h"

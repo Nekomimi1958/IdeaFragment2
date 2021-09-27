@@ -6,7 +6,7 @@
 
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
-#include "Fragment.h"
+#include "fragment.h"
 
 //---------------------------------------------------------------------------
 class TGrpFrame : public TGraphicControl

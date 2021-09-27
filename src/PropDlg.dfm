@@ -14,6 +14,7 @@ object FrgPropDlg: TFrgPropDlg
   ParentFont = True
   OldCreateOrder = False
   Position = poDesigned
+  Scaled = False
   ShowHint = True
   OnClose = FormClose
   OnCreate = FormCreate
@@ -66,13 +67,13 @@ object FrgPropDlg: TFrgPropDlg
       Left = 236
       Top = 10
       Width = 133
-      Height = 53
+      Height = 54
       Anchors = [akLeft, akBottom]
       Caption = #37197#33394'(&C)'
       TabOrder = 3
       DesignSize = (
         133
-        53)
+        54)
       object BackColorBtn: TButton
         Left = 70
         Top = 21
@@ -91,20 +92,21 @@ object FrgPropDlg: TFrgPropDlg
       end
       object TrnsChkBox: TCheckBox
         Left = 16
-        Top = 25
+        Top = 26
         Width = 48
         Height = 17
         Anchors = [akLeft, akBottom]
         Caption = #36879#36942
         TabOrder = 2
         OnClick = TrnsChkBoxClick
+        ExplicitTop = 25
       end
     end
     object SizeGroupBox: TGroupBox
       Left = 8
       Top = 10
       Width = 221
-      Height = 53
+      Height = 54
       Anchors = [akLeft, akBottom]
       Caption = #12469#12452#12474'(&S)'
       TabOrder = 2
@@ -114,6 +116,14 @@ object FrgPropDlg: TFrgPropDlg
         Width = 12
         Height = 13
         Caption = #65295
+      end
+      object FitShape: TShape
+        Left = 94
+        Top = 46
+        Width = 105
+        Height = 2
+        Brush.Color = clFuchsia
+        Pen.Color = clFuchsia
       end
       object WdUpDown: TUpDown
         Left = 62

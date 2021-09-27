@@ -3,15 +3,10 @@
 //	メインフォーム														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <imm.h>
-#include <htmlhelp.h>
 #include "usr_wic.h"
 #include "UIniFile.h"
 #include "UserFunc.h"
-#include "About.h"
+#include "about.h"
 #include "OptDlg.h"
 #include "PropDlg.h"
 #include "MapView.h"

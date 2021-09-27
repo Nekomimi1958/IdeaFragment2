@@ -5,8 +5,6 @@
 #ifndef RubrLayH
 #define RubrLayH
 //----------------------------------------------------------------------------
-#include <Winapi.Windows.hpp>
-#include <System.hpp>
 #include <System.Classes.hpp>
 #include <System.SysUtils.hpp>
 #include <System.Actions.hpp>

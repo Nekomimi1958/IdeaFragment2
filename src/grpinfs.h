@@ -50,8 +50,8 @@ public:
 
 	TFragList *FrgList;
 
-	__fastcall GrpInfs(TForm* AOwner, TFragList *lst);
-	__fastcall ~GrpInfs();
+	GrpInfs(TForm* AOwner, TFragList *lst);
+	~GrpInfs();
 
 	void __fastcall update_empty();
 	int  __fastcall get_empty_idx();

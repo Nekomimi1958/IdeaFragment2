@@ -5,8 +5,6 @@
 #ifndef PropDlgH
 #define PropDlgH
 //----------------------------------------------------------------------------
-#include <Winapi.Windows.hpp>
-#include <Winapi.Messages.hpp>
 #include <System.Actions.hpp>
 #include <System.SysUtils.hpp>
 #include <System.Classes.hpp>
@@ -85,6 +83,7 @@ __published:
 	TRadioButton *NormalRadioBtn;
 	TRadioButton *PlateRadioBtn;
 	TRadioButton *SymbolRadioBtn;
+	TShape *FitShape;
 	TUpDown *HiUpDown;
 	TUpDown *WdUpDown;
 

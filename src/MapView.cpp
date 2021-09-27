@@ -2,10 +2,6 @@
 //	‘S‘Ì}																//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <memory>
-#include <algorithm>
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "Main.h"

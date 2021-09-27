@@ -2,12 +2,6 @@
 // ’f•Ð‚ÌƒNƒ‰ƒX															//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <memory>
-#include <tchar.h>
-#include <algorithm>
-#include <RegularExpressions.hpp>
 #include "usr_wic.h"
 #include "usr_id3.h"
 #include "UserFunc.h"

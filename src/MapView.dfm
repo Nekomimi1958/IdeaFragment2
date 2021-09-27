@@ -17,6 +17,7 @@ object MapViewer: TMapViewer
   FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poDesigned
+  Scaled = False
   ShowHint = True
   OnActivate = MapUpdate
   OnClose = FormClose

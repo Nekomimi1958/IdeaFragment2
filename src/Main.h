@@ -6,9 +6,6 @@
 #define MainH
 
 //----------------------------------------------------------------------------
-#include <Winapi.Windows.hpp>
-#include <Winapi.Messages.hpp>
-#include <System.hpp>
 #include <System.Classes.hpp>
 #include <System.SysUtils.hpp>
 #include <System.Actions.hpp>
@@ -27,8 +24,6 @@
 #include <Vcl.ActnList.hpp>
 #include <Vcl.AppEvnts.hpp>
 #include <Vcl.StdActns.hpp>
-#include <Vcl.Printers.hpp>
-#include <Vcl.Clipbrd.hpp>
 #include "usr_shell.h"
 #include "EnvData.h"
 #include "ChildWin.h"
@@ -435,10 +430,8 @@ __published:
 	void __fastcall EditSelGroupItemClick(TObject *Sender);
 	void __fastcall EditSelGrpItemClick(TObject *Sender);
 	void __fastcall EditSelBgColExecute(TObject *Sender);
-	void __fastcall SelBgColItemDrawItem(TObject *Sender,
-		  TCanvas *ACanvas, const TRect &ARect, bool Selected);
-	void __fastcall SelBgColItemMeasureItem(TObject *Sender,
-		  TCanvas *ACanvas, int &Width, int &Height);
+	void __fastcall SelBgColItemDrawItem(TObject *Sender, TCanvas *ACanvas, const TRect &ARect, bool Selected);
+	void __fastcall SelBgColItemMeasureItem(TObject *Sender, TCanvas *ACanvas, int &Width, int &Height);
 	void __fastcall SelBgColItemClick(TObject *Sender);
 	void __fastcall EditGatherExecute(TObject *Sender);
 	void __fastcall EditPrevSelExecute(TObject *Sender);
@@ -494,16 +487,11 @@ __published:
 	void __fastcall GroupListBoxClick(TObject *Sender);
 	void __fastcall GroupListBoxDblClick(TObject *Sender);
 	void __fastcall GroupListBoxKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall GroupListBoxStartDock(TObject *Sender,
-		TDragDockObject *&DragObject);
-	void __fastcall GroupListBoxEndDock(TObject *Sender,
-		TObject *Target, int X, int Y);
-	void __fastcall DockPanelDockDrop(TObject *Sender,
-		TDragDockObject *Source, int X, int Y);
-	void __fastcall DockPanelUnDock(TObject *Sender, TControl *Client,
-		TWinControl *NewTarget, bool &Allow);
-	void __fastcall GroupListBoxDrawItem(TWinControl *Control, int Index,
-		TRect &Rect, TOwnerDrawState State);
+	void __fastcall GroupListBoxStartDock(TObject *Sender, TDragDockObject *&DragObject);
+	void __fastcall GroupListBoxEndDock(TObject *Sender, TObject *Target, int X, int Y);
+	void __fastcall DockPanelDockDrop(TObject *Sender, TDragDockObject *Source, int X, int Y);
+	void __fastcall DockPanelUnDock(TObject *Sender, TControl *Client, TWinControl *NewTarget, bool &Allow);
+	void __fastcall GroupListBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
 
 	void __fastcall GLineDelItemClick(TObject *Sender);
 	void __fastcall GLineTypeItemClick(TObject *Sender);
@@ -511,18 +499,15 @@ __published:
 	void __fastcall ShowHint(TObject *Sender);
 	void __fastcall GLinePopupMenuPopup(TObject *Sender);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
-	void __fastcall ToolPanelDockOver(TObject *Sender,
-		TDragDockObject *Source, int X, int Y, TDragState State, bool &Accept);
-	void __fastcall DockPanelDockOver(TObject *Sender,
-		TDragDockObject *Source, int X, int Y, TDragState State, bool &Accept);
+	void __fastcall ToolPanelDockOver(TObject *Sender, TDragDockObject *Source, int X, int Y, TDragState State, bool &Accept);
+	void __fastcall DockPanelDockOver(TObject *Sender, TDragDockObject *Source, int X, int Y, TDragState State, bool &Accept);
 	void __fastcall Tool1Click(TObject *Sender);
 	void __fastcall ToolNormalExecute(TObject *Sender);
 	void __fastcall ToolGLineExecute(TObject *Sender);
 	void __fastcall ToolFindExExecute(TObject *Sender);
 	void __fastcall ToolBrushExecute(TObject *Sender);
 	void __fastcall BrushPanelClick(TObject *Sender);
-	void __fastcall GroupListBoxMouseMove(TObject *Sender, TShiftState Shift,
-		  int X, int Y);
+	void __fastcall GroupListBoxMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall BrushChsBgColItemClick(TObject *Sender);
 
 	void __fastcall ChildUpdate(TObject *Sender);
@@ -544,23 +529,17 @@ __published:
 	void __fastcall GoHomeUpdate(TObject *Sender);
 	void __fastcall DispStatusUpdate(TObject *Sender);
 	void __fastcall ExMoveExecute(TObject *Sender);
-	void __fastcall GroupListBoxMouseDown(TObject *Sender,
-		  TMouseButton Button, TShiftState Shift, int X, int Y);
-	void __fastcall GroupListBoxDragDrop(TObject *Sender, TObject *Source,
-		  int X, int Y);
-	void __fastcall GroupListBoxDragOver(TObject *Sender, TObject *Source,
-		  int X, int Y, TDragState State, bool &Accept);
-	void __fastcall GroupListBoxEndDrag(TObject *Sender, TObject *Target,
-		  int X, int Y);
+	void __fastcall GroupListBoxMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
+	void __fastcall GroupListBoxDragDrop(TObject *Sender, TObject *Source, int X, int Y);
+	void __fastcall GroupListBoxDragOver(TObject *Sender, TObject *Source, int X, int Y, TDragState State, bool &Accept);
+	void __fastcall GroupListBoxEndDrag(TObject *Sender, TObject *Target, int X, int Y);
 	void __fastcall ToolGroupExecute(TObject *Sender);
 	void __fastcall DockPanelGetSiteInfo(TObject *Sender,
-		  TControl *DockClient, TRect &InfluenceRect, TPoint &MousePos,
-		  bool &CanDock);
+		  TControl *DockClient, TRect &InfluenceRect, TPoint &MousePos, bool &CanDock);
 	void __fastcall CsvExportExecute(TObject *Sender);
 	void __fastcall EditGrpStretchUpdate(TObject *Sender);
 	void __fastcall GListDispItemClick(TObject *Sender);
-	void __fastcall GroupListBoxMeasureItem(TWinControl *Control,
-		  int Index, int &Height);
+	void __fastcall GroupListBoxMeasureItem(TWinControl *Control, int Index, int &Height);
 	void __fastcall GListHideBlkItemClick(TObject *Sender);
 	void __fastcall GroupListBoxEnter(TObject *Sender);
 	void __fastcall GroupListBoxExit(TObject *Sender);
@@ -593,7 +572,6 @@ __published:
 	void __fastcall ApplicationEvents1ModalBegin(TObject *Sender);
 	bool __fastcall ApplicationEvents1Help(WORD Command, NativeInt Data, bool &CallHelp);
 	void __fastcall ApplicationEvents1ModalEnd(TObject *Sender);
-
 
 private:
 	UnicodeString StartFile;		//コマンドラインで指定の開始ファイル

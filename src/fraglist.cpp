@@ -2,11 +2,6 @@
 //	断片リストのクラス													//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <algorithm>
-
 #include "EnvData.h"
 #include "UserFunc.h"
 #include "fraglist.h"

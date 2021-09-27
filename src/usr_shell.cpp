@@ -2,8 +2,6 @@
 // Shell 関連															//
 // 最低限のドロップ処理のみ												//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
 #include "usr_shell.h"
 
 //---------------------------------------------------------------------------
@@ -105,7 +103,7 @@ protected:
 		refCount = 0;
 	}
 
-	~TDropTargetBase() { }
+	virtual ~TDropTargetBase() { }
 
 	virtual HRESULT __stdcall QueryInterface(const IID& iid, void **ppv)
 	{
@@ -129,13 +127,9 @@ protected:
 	virtual ULONG __stdcall Release()
 	{
 		refCount--;
-		if (refCount==0) {
-			delete this;
-			return 0;
-		}
-		else {
-			return refCount;
-		}
+		if (refCount>0) return refCount;
+		delete this;
+		return 0;
 	}
 };
 //---------------------------------------------------------------------------

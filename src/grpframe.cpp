@@ -2,11 +2,6 @@
 // グループ枠コントロール												//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <algorithm>
-
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "grpframe.h"

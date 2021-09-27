@@ -2,12 +2,6 @@
 //	–îˆóü‚ÌƒNƒ‰ƒX														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <algorithm>
-#include <math.h>
-#include <Vcl.Printers.hpp>
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "arwline.h"

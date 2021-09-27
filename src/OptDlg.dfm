@@ -10,6 +10,7 @@ object OptionDlg: TOptionDlg
   ParentFont = True
   OldCreateOrder = False
   Position = poMainFormCenter
+  Scaled = False
   ShowHint = True
   OnCreate = FormCreate
   OnDestroy = FormDestroy

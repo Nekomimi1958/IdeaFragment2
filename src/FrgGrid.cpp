@@ -2,10 +2,6 @@
 //	’f•Ðˆê——															//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <tchar.h>
 #include "EnvData.h"
 #include "Main.h"
 #include "PropDlg.h"
@@ -17,8 +13,7 @@
 TFragGrid *FragGrid;
 
 //---------------------------------------------------------------------------
-__fastcall TFragGrid::TFragGrid(TComponent* Owner)
-    : TForm(Owner)
+__fastcall TFragGrid::TFragGrid(TComponent* Owner) : TForm(Owner)
 {
 	FS = NULL;
 }

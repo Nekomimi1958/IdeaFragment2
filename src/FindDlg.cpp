@@ -2,10 +2,6 @@
 //	検索ダイアログ														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <tchar.h>
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "Main.h"
@@ -17,8 +13,7 @@
 TFindSetDlg *FindSetDlg;
 
 //---------------------------------------------------------------------
-__fastcall TFindSetDlg::TFindSetDlg(TComponent* AOwner)
-	: TForm(AOwner)
+__fastcall TFindSetDlg::TFindSetDlg(TComponent* AOwner) : TForm(AOwner)
 {
 }
 //---------------------------------------------------------------------------

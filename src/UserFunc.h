@@ -6,7 +6,6 @@
 #define UsrFuncH
 
 //---------------------------------------------------------------------------
-#include <System.StrUtils.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.Grids.hpp>
 

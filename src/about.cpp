@@ -2,12 +2,9 @@
 //	ƒo[ƒWƒ‡ƒ“î•ñ														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
 #include "UserFunc.h"
 #include "EnvData.h"
-#include "About.h"
+#include "about.h"
 
 //---------------------------------------------------------------------------
 #pragma resource "*.dfm"
@@ -21,7 +18,7 @@ __fastcall TAboutBox::TAboutBox(TComponent *Owner) : TForm(Owner)
 void __fastcall TAboutBox::FormShow(TObject *Sender)
 {
 	Version->Caption  = "Version "+ get_VersionStr(Application->ExeName);
-	Comments->Caption = "2003-2019 by Nekomimi";
+	Comments->Caption = "2003-2021 by Nekomimi";
 }
 //---------------------------------------------------------------------------
 

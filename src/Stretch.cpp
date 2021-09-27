@@ -2,9 +2,6 @@
 // 伸縮ダイアログ														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
 #include "EnvData.h"
 #include "Main.h"
 #include "Stretch.h"

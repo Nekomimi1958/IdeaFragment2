@@ -2,11 +2,6 @@
 // グループ情報のクラス													//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <algorithm>
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "grpinfs.h"
@@ -15,7 +10,7 @@
 #pragma package(smart_init)
 
 //---------------------------------------------------------------------------
-__fastcall GrpInfs::GrpInfs(TForm* AOwner, TFragList *lst)
+GrpInfs::GrpInfs(TForm* AOwner, TFragList *lst)
 {
 	FrgList = lst;
 	gcv = AOwner->Canvas;
@@ -53,7 +48,7 @@ __fastcall GrpInfs::GrpInfs(TForm* AOwner, TFragList *lst)
 	exist_img = false;
 }
 //---------------------------------------------------------------------------
-__fastcall GrpInfs::~GrpInfs()
+GrpInfs::~GrpInfs()
 {
 }
 

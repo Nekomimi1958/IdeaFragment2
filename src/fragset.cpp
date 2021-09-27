@@ -2,15 +2,6 @@
 //	断片セットのクラス													//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <algorithm>
-#include <math.h>
-#include <Vcl.Clipbrd.hpp>
-#include <Vcl.Printers.hpp>
-#include <RegularExpressions.hpp>
 #include "usr_wic.h"
 #include "UserFunc.h"
 #include "EnvData.h"

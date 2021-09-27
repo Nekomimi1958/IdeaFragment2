@@ -11,6 +11,7 @@ object RubLayDlg: TRubLayDlg
   FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poDesigned
+  Scaled = False
   ShowHint = True
   OnClose = FormClose
   OnShow = FormShow

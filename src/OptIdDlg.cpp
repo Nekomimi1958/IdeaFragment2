@@ -2,10 +2,6 @@
 // 個別設定ダイアログ													//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <math.h>
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "OptIdDlg.h"
@@ -33,8 +29,7 @@ TOptIndDlg *OptIndDlg;
 #define IIXFNT_tit	4
 
 //---------------------------------------------------------------------------
-__fastcall TOptIndDlg::TOptIndDlg(TComponent* Owner)
-        : TForm(Owner)
+__fastcall TOptIndDlg::TOptIndDlg(TComponent* Owner) : TForm(Owner)
 {
 	FS = NULL;
 }

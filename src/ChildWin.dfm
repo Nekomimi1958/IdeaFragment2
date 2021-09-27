@@ -10,6 +10,7 @@ object MDIChild: TMDIChild
   FormStyle = fsMDIChild
   OldCreateOrder = False
   Position = poDesigned
+  Scaled = False
   ShowHint = True
   Visible = True
   OnActivate = FormActivate

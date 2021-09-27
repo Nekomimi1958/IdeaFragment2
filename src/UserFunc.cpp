@@ -2,15 +2,6 @@
 //	îƒópã§í ä÷êî														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <algorithm>
-#include <htmlhelp.h>
-#include <System.IOUtils.hpp>
-#include <System.StrUtils.hpp>
-#include <RegularExpressions.hpp>
 #include "UserFunc.h"
 
 //---------------------------------------------------------------------------

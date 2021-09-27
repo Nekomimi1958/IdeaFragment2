@@ -2,11 +2,6 @@
 // 浮遊配置ツール														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <math.h>
-
 #include "EnvData.h"
 #include "Main.h"
 #include "RubrLay.h"
@@ -16,8 +11,7 @@
 TRubLayDlg *RubLayDlg;
 
 //---------------------------------------------------------------------
-__fastcall TRubLayDlg::TRubLayDlg(TComponent* AOwner)
-	: TForm(AOwner)
+__fastcall TRubLayDlg::TRubLayDlg(TComponent* AOwner) : TForm(AOwner)
 {
 	FS = NULL;
 }

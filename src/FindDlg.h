@@ -5,8 +5,6 @@
 #ifndef FindDlgH
 #define FindDlgH
 //----------------------------------------------------------------------------
-#include <Winapi.Windows.hpp>
-#include <System.hpp>
 #include <System.SysUtils.hpp>
 #include <System.Classes.hpp>
 #include <System.Actions.hpp>

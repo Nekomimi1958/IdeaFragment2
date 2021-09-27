@@ -2,10 +2,6 @@
 //	子ウィンドウ														//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-
-#include <tchar.h>
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "Main.h"

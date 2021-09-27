@@ -14,6 +14,7 @@ object FindExForm: TFindExForm
   FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poDesigned
+  Scaled = False
   ShowHint = True
   OnClose = FormClose
   OnCreate = FormCreate

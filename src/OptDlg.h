@@ -5,12 +5,9 @@
 #ifndef OptDlgH
 #define OptDlgH
 //----------------------------------------------------------------------------
-#include <Winapi.Windows.hpp>
-#include <System.hpp>
 #include <System.Classes.hpp>
 #include <System.SysUtils.hpp>
 #include <System.Actions.hpp>
-#include <System.Win.Registry.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.Buttons.hpp>
@@ -21,7 +18,6 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.Mask.hpp>
 #include <Vcl.ActnList.hpp>
-#include <Vcl.FileCtrl.hpp>
 #include "arwline.h"
 #include "MarkList.h"
 
@@ -94,6 +90,7 @@ __published:
 	TCheckBox *PrintMonoCheckBox;
 	TCheckBox *PrintScrSizeCheckBox;
 	TCheckBox *PrintTimeCheckBox;
+	TCheckBox *RDragScrollCheckBox;
 	TCheckBox *RstScrPosCheckBox;
 	TCheckBox *SelJumpFrgCheckBox;
 	TCheckBox *ShiftCheckBox;
@@ -205,7 +202,6 @@ __published:
 	TUpDown *TrmMgnUpDown;
 	TUpDown *TrmWdUpDown;
 	TUpDown *WdUpDown;
-	TCheckBox *RDragScrollCheckBox;
 
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall SKChgBtnClick(TObject *Sender);

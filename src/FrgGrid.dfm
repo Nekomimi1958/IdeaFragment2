@@ -13,6 +13,7 @@ object FragGrid: TFragGrid
   FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poDesigned
+  Scaled = False
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate

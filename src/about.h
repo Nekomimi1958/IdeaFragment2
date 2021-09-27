@@ -5,8 +5,6 @@
 #ifndef AboutH
 #define AboutH
 //----------------------------------------------------------------------------
-#include <Winapi.Windows.hpp>
-#include <System.hpp>
 #include <System.Classes.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Buttons.hpp>

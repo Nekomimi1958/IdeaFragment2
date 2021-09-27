@@ -2,11 +2,6 @@
 // プロパティ/新規作成ダイアログ										//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <algorithm>
 #include "usr_id3.h"
 #include "UserFunc.h"
 #include "fragset.h"
@@ -83,6 +78,8 @@ void __fastcall TFrgPropDlg::FormShow(TObject *Sender)
 
 	Memo1->MaxLength	  = MAX_TEXTLEN;
 	Memo1->WordWrap 	  = EV->input_wordwrap;
+
+	FitShape->Visible	  = false;
 
 	//新規作成
 	if (swNewFrag) {
@@ -902,11 +899,17 @@ void __fastcall TFrgPropDlg::FitWdActionExecute(TObject *Sender)
 	}
 	int wd = GetFitWidth(cv, Memo1->Lines->Text, FrgWdEdit->Text.ToInt(), FrgHiEdit->Text.ToInt());
 	if (wd>0) InitUpDown(WdUpDown, wd);
+
+	if (is_KeyDown(VK_SHIFT) || is_KeyDown(VK_CONTROL)) {
+		InitUpDown(HiUpDown, GetFitHeight(cv, Memo1->Lines->Text, FrgWdEdit->Text.ToInt()));
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TFrgPropDlg::FitWdActionUpdate(TObject *Sender)
 {
 	((TAction*)Sender)->Enabled = !mltSelected? (cur_style==fgsNormal || cur_style==fgsPlate) : false;
+
+	FitShape->Visible = (is_KeyDown(VK_SHIFT) || is_KeyDown(VK_CONTROL));
 }
 
 //---------------------------------------------------------------------------
@@ -922,6 +925,11 @@ void __fastcall TFrgPropDlg::FitHiActionExecute(TObject *Sender)
 	default:		cv->Font->Assign(prpFS->frgFont); break;
 	}
 	InitUpDown(HiUpDown, GetFitHeight(cv, Memo1->Lines->Text, FrgWdEdit->Text.ToInt()));
+
+	if (is_KeyDown(VK_SHIFT) || is_KeyDown(VK_CONTROL)) {
+		int wd = GetFitWidth(cv, Memo1->Lines->Text, FrgWdEdit->Text.ToInt(), FrgHiEdit->Text.ToInt());
+		if (wd>0) InitUpDown(WdUpDown, wd);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TFrgPropDlg::FitHiActionUpdate(TObject *Sender)

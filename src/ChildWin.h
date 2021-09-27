@@ -5,8 +5,6 @@
 #ifndef ChildWinH
 #define ChildWinH
 //----------------------------------------------------------------------------
-#include <Winapi.Windows.hpp>
-#include <System.hpp>
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.Forms.hpp>

@@ -3,10 +3,6 @@
 //																		//
 //		カットバッファやアンドゥに使用									//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-
 #include "EnvData.h"
 #include "fragbuf.h"
 

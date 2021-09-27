@@ -12,6 +12,7 @@ object FindSetDlg: TFindSetDlg
   ParentFont = True
   OldCreateOrder = False
   Position = poDesigned
+  Scaled = False
   ShowHint = True
   OnClose = FormClose
   OnCreate = FormCreate

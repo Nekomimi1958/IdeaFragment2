@@ -2,12 +2,6 @@
 //	ägí£åüçı															//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
-#pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <algorithm>
-#include <RegularExpressions.hpp>
 #include "UserFunc.h"
 #include "EnvData.h"
 #include "Main.h"
@@ -100,8 +94,7 @@ int __fastcall QFrgCmp(void * Item1, void * Item2)
 //===========================================================================
 // TFindExForm ÉNÉâÉX
 //===========================================================================
-__fastcall TFindExForm::TFindExForm(TComponent* Owner)
-    : TForm(Owner)
+__fastcall TFindExForm::TFindExForm(TComponent* Owner) : TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
