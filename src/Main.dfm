@@ -10,7 +10,6 @@ object IdeaFragMainForm: TIdeaFragMainForm
   ParentFont = True
   FormStyle = fsMDIForm
   Menu = MainMenu1
-  OldCreateOrder = False
   Position = poDesigned
   Scaled = False
   ShowHint = True
@@ -20,8 +19,7 @@ object IdeaFragMainForm: TIdeaFragMainForm
   OnDestroy = FormDestroy
   OnPaint = FormPaint
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Splitter1: TSplitter
     Left = 0
     Top = 32
@@ -123,7 +121,7 @@ object IdeaFragMainForm: TIdeaFragMainForm
     DragKind = dkDock
     DragMode = dmAutomatic
     ImeMode = imClose
-    ItemHeight = 13
+    ItemHeight = 15
     PopupMenu = GlistPopupMenu
     TabOrder = 5
     Visible = False
@@ -777,12 +775,12 @@ object IdeaFragMainForm: TIdeaFragMainForm
   end
   object OpenDialog: TOpenDialog
     Filter = #12377#12409#12390#12398#65420#65383#65394#65433' (*.*)|*.*'
-    Left = 571
+    Left = 595
     Top = 102
   end
   object SaveDialog: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
-    Left = 639
+    Left = 679
     Top = 102
   end
   object EditPopupMenu: TPopupMenu
@@ -790,7 +788,7 @@ object IdeaFragMainForm: TIdeaFragMainForm
     Images = BtnImgList
     OnPopup = EditPopupMenuPopup
     Left = 208
-    Top = 102
+    Top = 110
     object PopUndoPosItem: TMenuItem
       Action = EditUndo
     end
@@ -889,14 +887,14 @@ object IdeaFragMainForm: TIdeaFragMainForm
     Enabled = False
     Interval = 250
     OnTimer = Timer1Timer
-    Left = 120
-    Top = 97
+    Left = 112
+    Top = 105
   end
   object GlistPopupMenu: TPopupMenu
     AutoHotkeys = maManual
     HelpContext = 33
     OnPopup = GlistPopupMenuPopup
-    Left = 310
+    Left = 318
     Top = 46
     object GListUpItem: TMenuItem
       Caption = #19978#12408'(&U)'
@@ -977,15 +975,15 @@ object IdeaFragMainForm: TIdeaFragMainForm
     end
   end
   object PrintDialog1: TPrintDialog
-    Left = 571
+    Left = 595
     Top = 158
   end
   object GLinePopupMenu: TPopupMenu
     AutoHotkeys = maManual
     Images = BtnImgList
     OnPopup = GLinePopupMenuPopup
-    Left = 308
-    Top = 102
+    Left = 316
+    Top = 110
     object GLineType0Item: TMenuItem
       Caption = #12479#12452#12503' : '#32218' (&L)'
       OnClick = GLineTypeItemClick
@@ -1117,7 +1115,7 @@ object IdeaFragMainForm: TIdeaFragMainForm
   object BtnImgList: TImageList
     Height = 20
     Width = 20
-    Left = 499
+    Left = 507
     Top = 102
     Bitmap = {
       494C010121002500040014001400FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
@@ -2995,13 +2993,13 @@ object IdeaFragMainForm: TIdeaFragMainForm
       00000000000000000000000000000000000000000000}
   end
   object ColorDialog1: TColorDialog
-    Left = 639
+    Left = 679
     Top = 158
   end
   object BrushPopupMenu: TPopupMenu
     Images = BtnImgList
-    Left = 308
-    Top = 209
+    Left = 316
+    Top = 233
     object BrushChsColItem: TMenuItem
       Caption = #32972#26223#22615#12426#33394#12398#36984#25246'(&C)'
       OnClick = BrushPanelClick
@@ -3026,8 +3024,8 @@ object IdeaFragMainForm: TIdeaFragMainForm
   object BgColPopupMenu: TPopupMenu
     AutoHotkeys = maManual
     OwnerDraw = True
-    Left = 308
-    Top = 278
+    Left = 316
+    Top = 294
   end
   object ActionList1: TActionList
     Images = BtnImgList
@@ -3659,7 +3657,7 @@ object IdeaFragMainForm: TIdeaFragMainForm
   end
   object ActionList2: TActionList
     Left = 435
-    Top = 153
+    Top = 169
     object DispStatus: TAction
       Caption = 'DispStatus'
       OnExecute = DispStatusUpdate
@@ -3668,8 +3666,8 @@ object IdeaFragMainForm: TIdeaFragMainForm
   end
   object GFrmPopupMenu: TPopupMenu
     OnPopup = GFrmPopupMenuPopup
-    Left = 308
-    Top = 153
+    Left = 316
+    Top = 169
     object GFrmSelItem: TMenuItem
       Caption = #12464#12523#12540#12503#36984#25246'(&S)'
       OnClick = GFrmSelItemClick
@@ -3755,7 +3753,7 @@ object IdeaFragMainForm: TIdeaFragMainForm
   end
   object EditPopupMenu2: TPopupMenu
     Left = 206
-    Top = 154
+    Top = 170
     object PopUndoPosItem2: TMenuItem
       Action = EditUndo
     end
@@ -3804,7 +3802,7 @@ object IdeaFragMainForm: TIdeaFragMainForm
     OnMessage = ApplicationEvents1Message
     OnModalBegin = ApplicationEvents1ModalBegin
     OnModalEnd = ApplicationEvents1ModalEnd
-    Left = 120
+    Left = 112
     Top = 48
   end
 end

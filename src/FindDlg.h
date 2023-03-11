@@ -68,9 +68,12 @@ __published:
 	TMenuItem *SrcPasteItem;
 	TMenuItem *SrcSortHistItem;
 	TPopupMenu *SrcPopupMenu;
+	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall SrcCutItemClick(TObject *Sender);
+	void __fastcall SrcCopyItemClick(TObject *Sender);
+	void __fastcall SrcPasteItemClick(TObject *Sender);
 	void __fastcall SortFindHistActionExecute(TObject *Sender);
 	void __fastcall SortFindHistActionUpdate(TObject *Sender);
 	void __fastcall DelFromHistActionExecute(TObject *Sender);
@@ -78,9 +81,6 @@ __published:
 	void __fastcall ClrFindHistActionExecute(TObject *Sender);
 	void __fastcall ClrFindHistActionUpdate(TObject *Sender);
 	void __fastcall RefRegItemClick(TObject *Sender);
-	void __fastcall SrcCutItemClick(TObject *Sender);
-	void __fastcall SrcCopyItemClick(TObject *Sender);
-	void __fastcall SrcPasteItemClick(TObject *Sender);
 	void __fastcall StartActionExecute(TObject *Sender);
 	void __fastcall StartActionUpdate(TObject *Sender);
 

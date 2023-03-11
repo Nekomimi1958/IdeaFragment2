@@ -35,9 +35,9 @@ __published:	// IDE 管理のコンポーネント
 	TRadioGroup *RadioGroup1;
 	TTrackBar *TrackBar1;
 
-	void __fastcall TrackBar1Change(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall TrackBar1Change(TObject *Sender);
 	void __fastcall RadioGroup1Click(TObject *Sender);
 	void __fastcall SetBtnXClick(TObject *Sender);
 	void __fastcall ApplyBtnClick(TObject *Sender);

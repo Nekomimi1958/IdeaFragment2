@@ -40,6 +40,10 @@ __published:	// IDE 管理のコンポーネント
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormDestroy(TObject *Sender);
+    void __fastcall FormActivate(TObject *Sender);
+    void __fastcall FormDeactivate(TObject *Sender);
+    void __fastcall FrgLstGridEnter(TObject *Sender);
+    void __fastcall FrgLstGridExit(TObject *Sender);
 	void __fastcall FrgLstGridDrawCell(TObject *Sender, int ACol,
 		  int ARow, TRect &Rect, TGridDrawState State);
 	void __fastcall FrgLstGridDblClick(TObject *Sender);
@@ -47,17 +51,13 @@ __published:	// IDE 管理のコンポーネント
 		  TMouseButton Button, TShiftState Shift, int X, int Y);
 	void __fastcall FrgLstGridKeyDown(TObject *Sender, WORD &Key,
 		  TShiftState Shift);
-	void __fastcall DockPanelUnDock(TObject *Sender, TControl *Client,
-		  TWinControl *NewTarget, bool &Allow);
-	void __fastcall DockPanelDockDrop(TObject *Sender,
-		  TDragDockObject *Source, int X, int Y);
 	void __fastcall DockPanelDockOver(TObject *Sender,
 		TDragDockObject *Source, int X, int Y, TDragState State, bool &Accept);
+	void __fastcall DockPanelDockDrop(TObject *Sender,
+		  TDragDockObject *Source, int X, int Y);
+	void __fastcall DockPanelUnDock(TObject *Sender, TControl *Client,
+		  TWinControl *NewTarget, bool &Allow);
 	void __fastcall DockPanelResize(TObject *Sender);
-    void __fastcall FormDeactivate(TObject *Sender);
-    void __fastcall FrgLstGridEnter(TObject *Sender);
-    void __fastcall FrgLstGridExit(TObject *Sender);
-    void __fastcall FormActivate(TObject *Sender);
 
 private:	// ユーザー宣言
 	bool SelSkip;

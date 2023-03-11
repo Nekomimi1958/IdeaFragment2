@@ -49,15 +49,15 @@ __published:
 	TTrackBar *LenTrackBar;
 	TTrackBar *SpcTrackBar;
 
-	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall HideBtnClick(TObject *Sender);
 	void __fastcall RunActionExecute(TObject *Sender);
 	void __fastcall RunActionUpdate(TObject *Sender);
 	void __fastcall ReadyActionExecute(TObject *Sender);
 	void __fastcall QuickActionExecute(TObject *Sender);
 	void __fastcall QuickActionUpdate(TObject *Sender);
-	void __fastcall HideBtnClick(TObject *Sender);
 
 private:
 

@@ -3107,7 +3107,8 @@ void FragSet::rect_select(TRect rc)
 				rc2 = fp->vRC;
 			}
 
-			if (EV->FrameAllSel || rc.Contains(rc2)) fp->Selected = true;
+			if (rc.Contains(rc2) || (EV->FrameAllSel && rc.Intersects(rc2))) fp->Selected = true;
+
 			if (gflag)
 				gp0->RepaintFrm = true;
 			else if (!fp->Changed)

@@ -49,23 +49,23 @@ __published:	// IDE 管理のコンポーネント
 	TUpDown *ScrHiUpDown;
 	TUpDown *ScrWdUpDown;
 
-	void __fastcall FormShow(TObject *Sender);
-	void __fastcall OKBtnClick(TObject *Sender);
-	void __fastcall DivEditChange(TObject *Sender);
-	void __fastcall ColButtonClick(TObject *Sender);
-	void __fastcall ColComboBoxChange(TObject *Sender);
-	void __fastcall DefColBtnClick(TObject *Sender);
-	void __fastcall FontButtonClick(TObject *Sender);
-	void __fastcall FontComboBoxChange(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormDestroy(TObject *Sender);
+	void __fastcall ColComboBoxChange(TObject *Sender);
+	void __fastcall ColComboBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
+	void __fastcall ColButtonClick(TObject *Sender);
+	void __fastcall DefColBtnClick(TObject *Sender);
+	void __fastcall FontComboBoxChange(TObject *Sender);
+	void __fastcall FontComboBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
+	void __fastcall FontButtonClick(TObject *Sender);
 	void __fastcall DefFontBtnClick(TObject *Sender);
 	void __fastcall DivModComboBoxChange(TObject *Sender);
+	void __fastcall DivEditChange(TObject *Sender);
 	void __fastcall ScrWdEdit_Change(TObject *Sender);
 	void __fastcall ScrHiEdit_Change(TObject *Sender);
 	void __fastcall NumberEditExit(TObject *Sender);
-	void __fastcall ColComboBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
-	void __fastcall FontComboBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
+	void __fastcall OKBtnClick(TObject *Sender);
 
 private:	// ユーザー宣言
 	double AspectRatio;

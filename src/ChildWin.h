@@ -28,6 +28,7 @@ __published:
 	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall FormResize(TObject *Sender);
 	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall FormDeactivate(TObject *Sender);
 	void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button,
 		TShiftState Shift, int X, int Y);
 	void __fastcall FormMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
@@ -37,7 +38,6 @@ __published:
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ScrollTimerTimer(TObject *Sender);
-	void __fastcall FormDeactivate(TObject *Sender);
 
 private:
 	bool ScrMoving;		//‰æ–ÊˆÚ“®’†

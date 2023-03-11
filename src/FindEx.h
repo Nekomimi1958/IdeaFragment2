@@ -124,33 +124,33 @@ __published:	// IDE 管理のコンポーネント
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormDestroy(TObject *Sender);
-	void __fastcall StartActionUpdate(TObject *Sender);
-	void __fastcall StartActionExecute(TObject *Sender);
-	void __fastcall ResultGridClick(TObject *Sender);
+	void __fastcall HideBtnClick(TObject *Sender);
 	void __fastcall RefDirBtnClick(TObject *Sender);
+	void __fastcall StartActionExecute(TObject *Sender);
+	void __fastcall StartActionUpdate(TObject *Sender);
 	void __fastcall ResultGridDrawCell(TObject *Sender, int ACol, int ARow,
 		  TRect &Rect, TGridDrawState State);
-	void __fastcall CopyListActionExecute(TObject *Sender);
+	void __fastcall ResultGridClick(TObject *Sender);
+	void __fastcall ResultGridDblClick(TObject *Sender);
 	void __fastcall ListActionUpdate(TObject *Sender);
 	void __fastcall ListSelOneUpdate(TObject *Sender);
+	void __fastcall CopyListActionExecute(TObject *Sender);
 	void __fastcall ClrListActionExecute(TObject *Sender);
-	void __fastcall ClearStatusMsg(TObject *Sender);
 	void __fastcall CopyAnchorActionExecute(TObject *Sender);
 	void __fastcall PropertyActionExecute(TObject *Sender);
-	void __fastcall ResultGridDblClick(TObject *Sender);
 	void __fastcall JumpActionExecute(TObject *Sender);
+	void __fastcall ClearStatusMsg(TObject *Sender);
     void __fastcall ResultGridKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall DelFromHistActionExecute(TObject *Sender);
-	void __fastcall DelFromHistActionUpdate(TObject *Sender);
-	void __fastcall SortFindHistActionExecute(TObject *Sender);
-	void __fastcall SortFindHistActionUpdate(TObject *Sender);
 	void __fastcall SrcCutItemClick(TObject *Sender);
 	void __fastcall SrcCopyItemClick(TObject *Sender);
 	void __fastcall SrcPasteItemClick(TObject *Sender);
-	void __fastcall RefRegItemClick(TObject *Sender);
+	void __fastcall SortFindHistActionExecute(TObject *Sender);
+	void __fastcall SortFindHistActionUpdate(TObject *Sender);
+	void __fastcall DelFromHistActionExecute(TObject *Sender);
+	void __fastcall DelFromHistActionUpdate(TObject *Sender);
 	void __fastcall ClrFindHistActionExecute(TObject *Sender);
 	void __fastcall ClrFindHistActionUpdate(TObject *Sender);
-	void __fastcall HideBtnClick(TObject *Sender);
+	void __fastcall RefRegItemClick(TObject *Sender);
 
 private:	// ユーザー宣言
 	TProgressBar *ProgressBar1;

@@ -221,6 +221,5 @@ public:
 		TShiftState Shift, int X, int Y);
 	void __fastcall FragDblClick(Fragment *sp);
 };
-
 //---------------------------------------------------------------------------
 #endif

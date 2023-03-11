@@ -203,46 +203,51 @@ __published:
 	TUpDown *TrmWdUpDown;
 	TUpDown *WdUpDown;
 
+	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
+	void __fastcall FormDestroy(TObject *Sender);
+	void __fastcall PageControl1Change(TObject *Sender);
+	void __fastcall TabSheet1Show(TObject *Sender);
+	void __fastcall GLinePBoxPaint(TObject *Sender);
+	void __fastcall FLinePBoxPaint(TObject *Sender);
+	void __fastcall GrpCheckListBoxDrawItem(TWinControl *Control, int Index,
+		  TRect &Rect, TOwnerDrawState State);
+	void __fastcall ColListBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
+	void __fastcall FontComboBoxChange(TObject *Sender);
+	void __fastcall FontComboBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
+	void __fastcall SamplePanelMouseDown(TObject *Sender,
+		  TMouseButton Button, TShiftState Shift, int X, int Y);
+	void __fastcall SymLabelClick(TObject *Sender);
+	void __fastcall GLinePBoxMouseDown(TObject *Sender, TMouseButton Button,
+		  TShiftState Shift, int X, int Y);
+	void __fastcall FLinePBoxMouseDown(TObject *Sender,
+		  TMouseButton Button, TShiftState Shift, int X, int Y);
+	void __fastcall GrpCheckListBoxClick(TObject *Sender);
+	void __fastcall StatusBar1Click(TObject *Sender);
+	void __fastcall ColButtonClick(TObject *Sender);
+	void __fastcall FontButtonClick(TObject *Sender);
+	void __fastcall AcceptCrCheckBoxClick(TObject *Sender);
+	void __fastcall ParentComboClick(TObject *Sender);
+	void __fastcall ShortCutListDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
+	void __fastcall ShortCutListClick(TObject *Sender);
 	void __fastcall SKChgBtnClick(TObject *Sender);
 	void __fastcall ClrBtnClick(TObject *Sender);
 	void __fastcall HomWinBtnClick(TObject *Sender);
 	void __fastcall SetCurHomBtnClick(TObject *Sender);
-	void __fastcall TabSheet1Show(TObject *Sender);
-	void __fastcall AcceptCrCheckBoxClick(TObject *Sender);
-	void __fastcall ColButtonClick(TObject *Sender);
-	void __fastcall FontButtonClick(TObject *Sender);
-	void __fastcall FontComboBoxChange(TObject *Sender);
-	void __fastcall GrpCheckListBoxDrawItem(TWinControl *Control, int Index,
-		  TRect &Rect, TOwnerDrawState State);
-	void __fastcall GrpCheckListBoxClick(TObject *Sender);
-	void __fastcall SamplePanelMouseDown(TObject *Sender,
-		  TMouseButton Button, TShiftState Shift, int X, int Y);
-	void __fastcall SymLabelClick(TObject *Sender);
-	void __fastcall StatusBar1Click(TObject *Sender);
-	void __fastcall GLinePBoxPaint(TObject *Sender);
-	void __fastcall GLinePBoxMouseDown(TObject *Sender, TMouseButton Button,
-		  TShiftState Shift, int X, int Y);
-	void __fastcall ShortCutListClick(TObject *Sender);
-	void __fastcall ParentComboClick(TObject *Sender);
+	void __fastcall RegExtBtnClick(TObject *Sender);
+	void __fastcall DelExtBtnClick(TObject *Sender);
 	void __fastcall SpiRefBtnClick(TObject *Sender);
-	void __fastcall FLinePBoxMouseDown(TObject *Sender,
-		  TMouseButton Button, TShiftState Shift, int X, int Y);
-	void __fastcall FLinePBoxPaint(TObject *Sender);
-	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall FormDestroy(TObject *Sender);
-	void __fastcall SizSpComboBoxChange(TObject *Sender);
-	void __fastcall SizValComboBoxChange(TObject *Sender);
-	void __fastcall JpgQTrackBarChange(TObject *Sender);
+	void __fastcall ConfigSpiActionExecute(TObject *Sender);
+	void __fastcall ConfigSpiActionUpdate(TObject *Sender);
 	void __fastcall AssociateListBoxClick(TObject *Sender);
 	void __fastcall AsoAddBtnClick(TObject *Sender);
 	void __fastcall AsoChgBtnClick(TObject *Sender);
 	void __fastcall AsoDelBtnClick(TObject *Sender);
 	void __fastcall AsoRefBtnClick(TObject *Sender);
-	void __fastcall OkActionExecute(TObject *Sender);
-	void __fastcall OkActionUpdate(TObject *Sender);
-	void __fastcall RegExtBtnClick(TObject *Sender);
-	void __fastcall DelExtBtnClick(TObject *Sender);
+	void __fastcall SizValComboBoxChange(TObject *Sender);
+    void __fastcall PrintMonoCheckBoxClick(TObject *Sender);
+	void __fastcall JpgQTrackBarChange(TObject *Sender);
+	void __fastcall SizSpComboBoxChange(TObject *Sender);
 	void __fastcall DefWdEditChange(TObject *Sender);
 	void __fastcall DefHiEditChange(TObject *Sender);
 	void __fastcall NamWdEditChange(TObject *Sender);
@@ -256,6 +261,7 @@ __published:
 	void __fastcall TrmMgnEditChange(TObject *Sender);
 	void __fastcall TrmWdEditChange(TObject *Sender);
 	void __fastcall TrmHiEditChange(TObject *Sender);
+	void __fastcall NumberEditExit(TObject *Sender);
 	void __fastcall AddExpItemActionExecute(TObject *Sender);
 	void __fastcall AddExpItemActionUpdate(TObject *Sender);
 	void __fastcall DelExpItemActionExecute(TObject *Sender);
@@ -264,19 +270,13 @@ __published:
 	void __fastcall UpExpItemActionUpdate(TObject *Sender);
 	void __fastcall DowExpItemActionExecute(TObject *Sender);
 	void __fastcall DowExpItemActionUpdate(TObject *Sender);
-	void __fastcall NumberEditExit(TObject *Sender);
-    void __fastcall PrintMonoCheckBoxClick(TObject *Sender);
 	void __fastcall PageControl1DrawTab(TCustomTabControl *Control, int TabIndex, const TRect &Rect, bool Active);
-	void __fastcall FindBtnClick(TObject *Sender);
-	void __fastcall ConfigSpiActionExecute(TObject *Sender);
-	void __fastcall ConfigSpiActionUpdate(TObject *Sender);
-	void __fastcall PageControl1Change(TObject *Sender);
-	void __fastcall FontComboBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
 	void __fastcall FindEditChange(TObject *Sender);
-	void __fastcall ShortCutListDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
+	void __fastcall FindBtnClick(TObject *Sender);
+	void __fastcall OkActionExecute(TObject *Sender);
+	void __fastcall OkActionUpdate(TObject *Sender);
 	void __fastcall DisableColActionExecute(TObject *Sender);
 	void __fastcall DisableColActionUpdate(TObject *Sender);
-	void __fastcall ColListBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
 
 private:
 	ArrowLine SampleGLine;

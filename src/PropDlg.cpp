@@ -275,17 +275,6 @@ void __fastcall TFrgPropDlg::FormClose(TObject *Sender,
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFrgPropDlg::GripPaintBoxPaint(TObject *Sender)
-{
-	//サイズ変更グリップを描画
-	RECT rc = Rect(
-		GripPaintBox->Width - ::GetSystemMetrics(SM_CXHSCROLL),
-		GripPaintBox->Height - ::GetSystemMetrics(SM_CYVSCROLL),
-		GripPaintBox->Width, GripPaintBox->Height);
-	::DrawFrameControl(GripPaintBox->Canvas->Handle, &rc,
-		DFC_SCROLL,	DFCS_SCROLLSIZEGRIP);
-}
-//---------------------------------------------------------------------------
 void __fastcall TFrgPropDlg::FormResize(TObject *Sender)
 {
 	Repaint();
@@ -308,6 +297,17 @@ void __fastcall TFrgPropDlg::WMDropFiles(TWMDropFiles &message)
 	::DragFinish((HDROP)message.Drop);
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TFrgPropDlg::GripPaintBoxPaint(TObject *Sender)
+{
+	//サイズ変更グリップを描画
+	RECT rc = Rect(
+		GripPaintBox->Width - ::GetSystemMetrics(SM_CXHSCROLL),
+		GripPaintBox->Height - ::GetSystemMetrics(SM_CYVSCROLL),
+		GripPaintBox->Width, GripPaintBox->Height);
+	::DrawFrameControl(GripPaintBox->Canvas->Handle, &rc,
+		DFC_SCROLL,	DFCS_SCROLLSIZEGRIP);
+}
 //---------------------------------------------------------------------
 //グループ変更
 //---------------------------------------------------------------------------

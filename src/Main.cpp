@@ -3394,4 +3394,3 @@ void __fastcall TIdeaFragMainForm::RubberLayExecute(TObject *Sender)
 	RubLayDlg->Show();
 }
 //---------------------------------------------------------------------------
-
